@@ -33,6 +33,7 @@ module.exports = {
   externals: [
     {
       react: 'react',
+      'react-dom': 'react-dom',
       lodash: {
         commonjs: 'lodash',
         commonjs2: 'lodash',
@@ -40,6 +41,6 @@ module.exports = {
         root: '_' // indicates global variable
       }
     },
-    /@material-ui\/core\/.*/
+    /@material-ui\/.*/
   ]
 };
