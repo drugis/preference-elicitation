@@ -26,10 +26,11 @@ function isIncreasing(pvf: TPvf): boolean {
 }
 
 export default function significantDigits(x: number, precision?: number) {
+  if (precision !== 0 && !precision) {
+    precision = 3;
+  }
   if (x === undefined || x === null || isNaN(x)) {
     throw 'attempt to apply significant digits to non-numeric value';
-  } else if (precision !== 0 && !precision) {
-    precision = 3;
   } else if (x === 0) {
     return x;
   } else if (x > 1 || x < -1) {
