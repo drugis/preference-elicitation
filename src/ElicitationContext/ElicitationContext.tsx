@@ -42,7 +42,7 @@ export function ElicitationContextProviderComponent({
   const [
     mostImportantCriterionId,
     setMostImportantCriterionId
-  ] = useState<string>();
+  ] = useState<string>('');
   const [preferences, setPreferences] = useState<
     Record<string, IExactSwingRatio> | Record<string, IRatioBoundConstraint>
   >({});

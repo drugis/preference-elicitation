@@ -11,11 +11,13 @@ export default function CriterionChoice({criterion}: {criterion: ICriterion}) {
   const pvf = pvfs[criterion.id];
   const unitType = criterion.dataSources[0].unitOfMeasurement.type;
   const usePercentage = showPercentages && canBePercentage(unitType);
+  const worst = getWorst(pvf, usePercentage);
+  const best = getBest(pvf, usePercentage);
 
   return (
     <label id={`ranking-choice-${criterion.id}`}>
       <Radio value={criterion.id} />
-      {`${pvf.direction} `}
+      {pvf.direction}{' '}
       <Tooltip
         disableHoverListener={!criterion.description}
         title={criterion.description ? criterion.description : ''}
@@ -27,10 +29,7 @@ export default function CriterionChoice({criterion}: {criterion: ICriterion}) {
           {criterion.title}
         </span>
       </Tooltip>
-      {` from ${getWorst(pvf, usePercentage)} to ${getBest(
-        pvf,
-        usePercentage
-      )}`}
+      {` from ${worst} to ${best}`}
     </label>
   );
 }
