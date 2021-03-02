@@ -1,8 +1,8 @@
 import Slider from '@material-ui/core/Slider';
 import React, {useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
-import significantDigits from 'src/ElicitationUtil/ElicitationUtil';
 import ICriterion from 'src/Interface/ICriterion';
+import significantDigits from 'src/Util/util';
 
 export default function ImpreciseSwingSlider({
   criterion

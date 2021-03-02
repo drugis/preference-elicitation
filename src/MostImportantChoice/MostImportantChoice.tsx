@@ -4,8 +4,8 @@ import Typography from '@material-ui/core/Typography';
 import _ from 'lodash';
 import React, {ChangeEvent, useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
-import {canBePercentage, getWorst} from 'src/ElicitationUtil/ElicitationUtil';
 import ICriterion from 'src/Interface/ICriterion';
+import {canBePercentage, getWorst} from 'src/Util/util';
 import CriterionChoice from '../CriterionChoice/CriterionChoice';
 import CriterionSituation from '../CriterionSituation/CriterionSituation';
 

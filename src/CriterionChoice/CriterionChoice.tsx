@@ -2,9 +2,9 @@ import Radio from '@material-ui/core/Radio';
 import Tooltip from '@material-ui/core/Tooltip';
 import React, {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
-import {canBePercentage} from 'src/ElicitationUtil/ElicitationUtil';
 import ICriterion from 'src/Interface/ICriterion';
-import {getBest, getWorst} from '../ElicitationUtil/ElicitationUtil';
+import {canBePercentage} from 'src/Util/util';
+import {getBest, getWorst} from '../Util/util';
 
 export default function CriterionChoice({criterion}: {criterion: ICriterion}) {
   const {pvfs, showPercentages} = useContext(ElicitationContext);

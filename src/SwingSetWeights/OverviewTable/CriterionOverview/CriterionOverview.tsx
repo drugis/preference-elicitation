@@ -3,15 +3,10 @@ import TableRow from '@material-ui/core/TableRow';
 import Tooltip from '@material-ui/core/Tooltip';
 import React, {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
-import {
-  canBePercentage,
-  getBest,
-  getUnitLabel,
-  getWorst
-} from 'src/ElicitationUtil/ElicitationUtil';
 import ImpreciseSwingSlider from 'src/ImpreciseSwingElicitation/ImpreciseSwingSlider/ImpreciseSwingSlider';
 import ICriterion from 'src/Interface/ICriterion';
 import PreciseSwingSlider from 'src/PreciseSwingElicitation/PreciseSwingSlider/PreciseSwingSlider';
+import {canBePercentage, getBest, getUnitLabel, getWorst} from 'src/Util/util';
 
 export default function CriterionOverview({
   criterion

@@ -1,13 +1,15 @@
 import Slider from '@material-ui/core/Slider';
 import React, {useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
-import significantDigits, {
+import {
   calculateImportance,
+  determineStepSize
+} from 'src/MatchingUtil/MatchingUtil';
+import significantDigits, {
   canBePercentage,
-  determineStepSize,
   getBest,
   getWorst
-} from 'src/ElicitationUtil/ElicitationUtil';
+} from 'src/Util/util';
 
 export default function MatchingSlider({
   currentCriterionId

@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid';
 import React, {useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
-import {getSwingStatement} from 'src/ElicitationUtil/ElicitationUtil';
+import {getSwingStatement} from 'src/SwingUtil/SwingUtil';
 import OverviewTable from './OverviewTable/OverviewTable';
 
 export default function SwingSetWeights() {

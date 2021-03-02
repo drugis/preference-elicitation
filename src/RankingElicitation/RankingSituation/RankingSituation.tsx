@@ -2,14 +2,10 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import _ from 'lodash';
 import React, {useContext} from 'react';
-import {UNRANKED} from 'src/constants';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
-import {
-  canBePercentage,
-  getBest,
-  getWorst
-} from 'src/ElicitationUtil/ElicitationUtil';
 import ICriterion from 'src/Interface/ICriterion';
+import {UNRANKED} from 'src/RankingUtil/RankingUtil';
+import {canBePercentage, getBest, getWorst} from 'src/Util/util';
 import CriterionSituation from '../../CriterionSituation/CriterionSituation';
 
 export default function RankingSituation() {

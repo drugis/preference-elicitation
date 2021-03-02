@@ -3,9 +3,9 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Typography from '@material-ui/core/Typography';
 import _ from 'lodash';
 import React, {ChangeEvent, useContext} from 'react';
-import {UNRANKED} from 'src/constants';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ICriterion from 'src/Interface/ICriterion';
+import {UNRANKED} from 'src/RankingUtil/RankingUtil';
 import CriterionChoice from '../../CriterionChoice/CriterionChoice';
 
 export default function RankingChoices({

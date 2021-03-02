@@ -7,13 +7,12 @@ import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import React, {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
-import {canBePercentage} from 'src/ElicitationUtil/ElicitationUtil';
 import {
-  getBest,
   getCurrentCriterion,
-  getMatchingStatement,
-  getWorst
-} from '../../ElicitationUtil/ElicitationUtil';
+  getMatchingStatement
+} from 'src/MatchingUtil/MatchingUtil';
+import {canBePercentage} from 'src/Util/util';
+import {getBest, getWorst} from '../../Util/util';
 import MatchingSlider from './MatchingSlider/MatchingSlider';
 
 export default function MatchingSetImportance() {

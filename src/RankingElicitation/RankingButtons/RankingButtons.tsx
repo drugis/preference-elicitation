@@ -2,14 +2,14 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import _ from 'lodash';
 import React, {useContext} from 'react';
-import {UNRANKED} from 'src/constants';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
+import IRankingAnswer from 'src/Interface/IRankingAnswer';
 import {
   assignMissingRankings,
   buildRankingPreferences,
-  findCriterionIdForRank
-} from 'src/ElicitationUtil/ElicitationUtil';
-import IRankingAnswer from 'src/Interface/IRankingAnswer';
+  findCriterionIdForRank,
+  UNRANKED
+} from 'src/RankingUtil/RankingUtil';
 
 export default function RankingButtons({
   selectedCriterionId,

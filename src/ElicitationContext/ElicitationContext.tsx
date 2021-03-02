@@ -3,11 +3,11 @@ import React, {createContext, useState} from 'react';
 import IRanking from 'src/Interface/IRanking';
 import IRankingAnswer from 'src/Interface/IRankingAnswer';
 import {TPvf} from 'src/Interface/TPvf';
+import {addRanking} from 'src/RankingUtil/RankingUtil';
 import {
-  addRanking,
   buildInitialImprecisePreferences,
   buildInitialPrecisePreferences
-} from '../ElicitationUtil/ElicitationUtil';
+} from 'src/SwingUtil/SwingUtil';
 import ICriterion from '../Interface/ICriterion';
 import IExactSwingRatio from '../Interface/IExactSwingRatio';
 import IRatioBoundConstraint from '../Interface/IRatioBoundConstraint';
