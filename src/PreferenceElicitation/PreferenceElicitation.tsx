@@ -47,7 +47,7 @@ export default function PreferenceElicitation({
   return (
     <ElicitationContextProviderComponent
       criteria={criteria}
-      elicitationMethod={'precise'}
+      elicitationMethod={elicitationMethod}
       showPercentages={showPercentages}
       pvfs={pvfs}
       cancelCallback={cancelCallback}

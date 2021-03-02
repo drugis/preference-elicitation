@@ -35,17 +35,13 @@ export default function MatchingSlider({
   const [sliderValue, setSliderValue] = useState<number>(
     getBest(pvfs[mostImportantCriterionId], usePercentage)
   );
-  const [stepSize, setStepSize] = useState<number>();
+  const [stepSize] = useState<number>(determineStepSize(pvf.range));
 
   useEffect(() => {
     const sliderValue = getBest(pvf, false);
     setSliderValue(sliderValue);
     setPreference(currentCriterionId, calculateImportance(sliderValue, pvf));
   }, [currentStep]);
-
-  useEffect(() => {
-    setStepSize(determineStepSize(pvf.range));
-  }, []);
 
   function handleSliderChanged(
     event: React.ChangeEvent<any>,

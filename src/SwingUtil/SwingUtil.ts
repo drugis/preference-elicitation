@@ -36,16 +36,18 @@ export function buildInitialImprecisePreferences(
 ): Record<string, IRatioBoundConstraint> {
   return _(criteria)
     .reject(['id', mostImportantCriterionId])
-    .map((criterion: ICriterion): [string, IRatioBoundConstraint] => {
-      const preference: IRatioBoundConstraint = {
-        criteria: [mostImportantCriterionId, criterion.id],
-        elicitationMethod: 'imprecise',
-        type: 'ratio bound',
-        bounds: [1, 100]
-      };
-      return [criterion.id, preference];
-    })
-    .fromPairs()
+    .keyBy('id')
+    .mapValues(
+      (criterion: ICriterion): IRatioBoundConstraint => {
+        const preference: IRatioBoundConstraint = {
+          criteria: [mostImportantCriterionId, criterion.id],
+          elicitationMethod: 'imprecise',
+          type: 'ratio bound',
+          bounds: [1, 100]
+        };
+        return preference;
+      }
+    )
     .value();
 }
 

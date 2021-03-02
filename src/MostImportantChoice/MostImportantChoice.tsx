@@ -66,7 +66,7 @@ export default function MostImportantChoice() {
       <Grid item xs={12}>
         <RadioGroup
           name="most-important-criterion-radio"
-          value={mostImportantCriterionId ? mostImportantCriterionId : ''}
+          value={mostImportantCriterionId}
           onChange={handleSelection}
         >
           {renderCriterionChoices()}
