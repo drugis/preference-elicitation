@@ -5,11 +5,15 @@ import IRanking from 'src/Interface/IRanking';
 import IRatioBoundConstraint from 'src/Interface/IRatioBoundConstraint';
 import { TPvf } from 'src/Interface/TPvf';
 import { TElicitationMethod } from 'src/Types/TElicitationMethod';
-export default function PreferenceElicitation({ elicitationMethod, criteria, showPercentages, pvfs, cancelCallback, saveCallback }: {
+export default function PreferenceElicitation({ elicitationMethod, InlineHelp, criteria, pvfs, showPercentages, cancelCallback, saveCallback }: {
     elicitationMethod: TElicitationMethod;
+    InlineHelp: ({ helpId, children }: {
+        helpId: string;
+        children: any;
+    }) => JSX.Element;
     criteria: ICriterion[];
-    showPercentages: boolean;
     pvfs: Record<string, TPvf>;
+    showPercentages: boolean;
     cancelCallback: () => void;
     saveCallback: (preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]) => void;
 }): JSX.Element;

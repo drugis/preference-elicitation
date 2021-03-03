@@ -20,6 +20,7 @@ export const ElicitationContext = createContext<IElicitationContext>(
 
 export function ElicitationContextProviderComponent({
   elicitationMethod,
+  InlineHelp,
   criteria,
   showPercentages,
   pvfs,
@@ -28,6 +29,13 @@ export function ElicitationContextProviderComponent({
   children
 }: {
   elicitationMethod: TElicitationMethod;
+  InlineHelp: ({
+    helpId,
+    children
+  }: {
+    helpId: string;
+    children: any;
+  }) => JSX.Element;
   criteria: ICriterion[];
   showPercentages: boolean;
   pvfs: Record<string, TPvf>;
@@ -105,6 +113,7 @@ export function ElicitationContextProviderComponent({
         pvfs,
         criteria,
         rankings,
+        InlineHelp,
         getCriterion,
         setCurrentStep,
         setIsNextDisabled,

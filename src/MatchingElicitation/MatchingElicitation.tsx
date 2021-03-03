@@ -1,7 +1,6 @@
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-// import InlineHelp from 'app/ts/InlineHelp/InlineHelp';
 import _ from 'lodash';
 import React, {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
@@ -10,14 +9,14 @@ import MatchingButtons from './MatchingButtons/MatchingButtons';
 import MatchingSetImportance from './MatchingSetImportance/MatchingSetImportance';
 
 export default function MatchingElicitation() {
-  const {currentStep, criteria} = useContext(ElicitationContext);
+  const {currentStep, criteria, InlineHelp} = useContext(ElicitationContext);
   const totalSteps = _.size(criteria);
 
   return (
     <Grid container item spacing={4} sm={12} md={9} component={Paper}>
       <Grid item xs={12}>
         <Typography id="matching-title-header" variant="h4">
-          Matching {/*<InlineHelp helpId="matching" />*/}
+          <InlineHelp helpId="matching">Matching</InlineHelp>
         </Typography>
       </Grid>
       <Grid item xs={12}>

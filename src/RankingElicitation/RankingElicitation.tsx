@@ -1,7 +1,6 @@
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-// import InlineHelp from 'app/ts/InlineHelp/InlineHelp';
 import _ from 'lodash';
 import React, {ChangeEvent, useContext, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
@@ -11,7 +10,7 @@ import RankingSituation from './RankingSituation/RankingSituation';
 
 export default function RankingElicitation() {
   const [selectedCriterionId, setSelectedCriterionId] = useState('');
-  const {currentStep, criteria} = useContext(ElicitationContext);
+  const {currentStep, criteria, InlineHelp} = useContext(ElicitationContext);
   const totalSteps = _.size(criteria) - 1;
 
   function handleSelection(event: ChangeEvent<HTMLInputElement>) {
@@ -22,7 +21,7 @@ export default function RankingElicitation() {
     <Grid container item spacing={4} sm={12} md={9} component={Paper}>
       <Grid item xs={12}>
         <Typography id="ranking-title-header" variant="h4">
-          Ranking {/*<InlineHelp helpId="ranking" />*/}
+          <InlineHelp helpId="ranking">Ranking</InlineHelp>
         </Typography>
       </Grid>
       <Grid item xs={12}>

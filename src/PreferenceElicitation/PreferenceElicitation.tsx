@@ -14,16 +14,24 @@ import {ElicitationContextProviderComponent} from '../ElicitationContext/Elicita
 
 export default function PreferenceElicitation({
   elicitationMethod,
+  InlineHelp,
   criteria,
-  showPercentages,
   pvfs,
+  showPercentages,
   cancelCallback,
   saveCallback
 }: {
   elicitationMethod: TElicitationMethod;
+  InlineHelp: ({
+    helpId,
+    children
+  }: {
+    helpId: string;
+    children: any;
+  }) => JSX.Element;
   criteria: ICriterion[];
-  showPercentages: boolean;
   pvfs: Record<string, TPvf>;
+  showPercentages: boolean;
   cancelCallback: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
@@ -52,6 +60,7 @@ export default function PreferenceElicitation({
       pvfs={pvfs}
       cancelCallback={cancelCallback}
       saveCallback={saveCallback}
+      InlineHelp={InlineHelp}
     >
       <Grid container justify="center" component={Box} mt={2}>
         {renderElicitation(elicitationMethod)}
