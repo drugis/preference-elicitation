@@ -2098,6 +2098,10 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+help-popup@drugis/help-popup#1.1.0:
+  version "1.1.0"
+  resolved "https://codeload.github.com/drugis/help-popup/tar.gz/ca1002b7adc77c354a5cc0782d441ae95b3cd637"
+
 hoist-non-react-statics@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz#ece0acaf71d62c2969c2ec59feff42a4b1a85b45"

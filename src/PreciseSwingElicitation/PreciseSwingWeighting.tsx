@@ -1,6 +1,7 @@
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import {InlineHelp} from 'help-popup';
 import React, {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import MostImportantChoice from '../MostImportantChoice/MostImportantChoice';
@@ -8,7 +9,7 @@ import SwingButtons from '../SwingButtons/SwingButtons';
 import SwingSetWeights from '../SwingSetWeights/SwingSetWeights';
 
 export default function PreciseSwingWeighting() {
-  const {currentStep, InlineHelp} = useContext(ElicitationContext);
+  const {currentStep} = useContext(ElicitationContext);
 
   return (
     <Grid container item spacing={4} sm={12} md={9} component={Paper}>

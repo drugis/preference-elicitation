@@ -18,13 +18,6 @@ export default interface IElicitationContext {
   pvfs: Record<string, TPvf>;
   criteria: ICriterion[];
   rankings: Record<string, IRankingAnswer>;
-  InlineHelp: ({
-    helpId,
-    children
-  }: {
-    helpId: string;
-    children: any;
-  }) => JSX.Element;
   getCriterion: (criterionId: string) => ICriterion;
   setCurrentStep: (newStep: number) => void;
   setIsNextDisabled: (isNextDisabled: boolean) => void;

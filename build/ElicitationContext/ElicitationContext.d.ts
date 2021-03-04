@@ -7,12 +7,8 @@ import IRatioBoundConstraint from '../Interface/IRatioBoundConstraint';
 import { TElicitationMethod } from '../Types/TElicitationMethod';
 import IElicitationContext from './IElicitationContext';
 export declare const ElicitationContext: React.Context<IElicitationContext>;
-export declare function ElicitationContextProviderComponent({ elicitationMethod, InlineHelp, criteria, showPercentages, pvfs, cancelCallback, saveCallback, children }: {
+export declare function ElicitationContextProviderComponent({ elicitationMethod, criteria, showPercentages, pvfs, cancelCallback, saveCallback, children }: {
     elicitationMethod: TElicitationMethod;
-    InlineHelp: ({ helpId, children }: {
-        helpId: string;
-        children: any;
-    }) => JSX.Element;
     criteria: ICriterion[];
     showPercentages: boolean;
     pvfs: Record<string, TPvf>;

@@ -39,7 +39,8 @@ module.exports = {
         commonjs2: 'lodash',
         amd: 'lodash',
         root: '_' // indicates global variable
-      }
+      },
+      'help-pupup': 'help-popup'
     },
     /@material-ui\/.*/
   ]
