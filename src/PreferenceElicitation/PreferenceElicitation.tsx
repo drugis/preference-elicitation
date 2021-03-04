@@ -1,4 +1,5 @@
 import {Box, Grid} from '@material-ui/core';
+import {HelpContextProviderComponent, IHelpInfo} from 'help-popup';
 import React from 'react';
 import ImpreciseSwingWeighting from 'src/ImpreciseSwingElicitation/ImpreciseSwingWeighting';
 import ICriterion from 'src/Interface/ICriterion';
@@ -13,15 +14,21 @@ import {TElicitationMethod} from 'src/Types/TElicitationMethod';
 import {ElicitationContextProviderComponent} from '../ElicitationContext/ElicitationContext';
 
 export default function PreferenceElicitation({
-  elicitationMethod,
   criteria,
+  elicitationMethod,
+  manualHost,
+  manualLexicon,
+  manualPath,
   pvfs,
   showPercentages,
   cancelCallback,
   saveCallback
 }: {
-  elicitationMethod: TElicitationMethod;
   criteria: ICriterion[];
+  elicitationMethod: TElicitationMethod;
+  manualHost: string;
+  manualLexicon: Record<string, IHelpInfo>;
+  manualPath: string;
   pvfs: Record<string, TPvf>;
   showPercentages: boolean;
   cancelCallback: () => void;
@@ -53,9 +60,15 @@ export default function PreferenceElicitation({
       cancelCallback={cancelCallback}
       saveCallback={saveCallback}
     >
-      <Grid container justify="center" component={Box} mt={2}>
-        {renderElicitation(elicitationMethod)}
-      </Grid>
+      <HelpContextProviderComponent
+        lexicon={manualLexicon}
+        host={manualHost}
+        path={manualPath}
+      >
+        <Grid container justify="center" component={Box} mt={2}>
+          {renderElicitation(elicitationMethod)}
+        </Grid>
+      </HelpContextProviderComponent>
     </ElicitationContextProviderComponent>
   );
 }
