@@ -37,7 +37,7 @@ export default function SwingButtons() {
     <ButtonGroup>
       <Button
         id="cancel-button"
-        color="primary"
+        color="secondary"
         variant="contained"
         onClick={cancel}
       >

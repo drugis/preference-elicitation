@@ -83,7 +83,7 @@ export default function RankingButtons({
       <Button
         id="previous-button"
         onClick={handlePreviousClick}
-        color="primary"
+        color="secondary"
         variant="contained"
         disabled={currentStep === 1}
       >
