@@ -5,7 +5,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
+import EditTemplate from 'src/EditTemplate/EditTemplate';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import {
   getCurrentCriterion,
@@ -22,7 +23,9 @@ export default function MatchingSetImportance() {
     mostImportantCriterionId,
     currentStep,
     getCriterion,
-    criteria
+    criteria,
+    template,
+    areWeEditing
   } = useContext(ElicitationContext);
 
   const mostImportantCriterion = getCriterion(mostImportantCriterionId);
@@ -36,10 +39,6 @@ export default function MatchingSetImportance() {
   );
   const currentUnitType =
     currentCriterion.dataSources[0].unitOfMeasurement.type;
-  const statement = getMatchingStatement(
-    mostImportantCriterion,
-    currentCriterion
-  );
 
   const usePercentagesForMostImportantCriterion =
     showPercentages && canBePercentage(mostImportantUnitType);
@@ -47,17 +46,45 @@ export default function MatchingSetImportance() {
   const usePercentagesForCurrentCriterion =
     showPercentages && canBePercentage(currentUnitType);
 
+  const [statement, setStatement] = useState<string>(
+    getMatchingStatement(
+      mostImportantCriterion,
+      currentCriterion,
+      usePercentagesForMostImportantCriterion,
+      usePercentagesForCurrentCriterion,
+      pvfs,
+      template
+    )
+  );
+
+  useEffect(() => {
+    setStatement(
+      getMatchingStatement(
+        mostImportantCriterion,
+        currentCriterion,
+        usePercentagesForMostImportantCriterion,
+        usePercentagesForCurrentCriterion,
+        pvfs,
+        template
+      )
+    );
+  }, [showPercentages]);
+
   return (
     <Grid container item spacing={2}>
       <Grid item xs={12}>
         <Typography variant="h6">{`Trade-off between ${mostImportantCriterion.title} and ${currentCriterion.title}`}</Typography>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        id="matching-statement"
-        dangerouslySetInnerHTML={{__html: statement}}
-      />
+      {areWeEditing ? (
+        <EditTemplate />
+      ) : (
+        <Grid
+          item
+          xs={12}
+          id="matching-statement"
+          dangerouslySetInnerHTML={{__html: statement}}
+        />
+      )}
       <Grid item xs={12}>
         <Table size="small">
           <TableHead>

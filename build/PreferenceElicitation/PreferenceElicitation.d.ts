@@ -6,14 +6,16 @@ import IRanking from 'src/Interface/IRanking';
 import IRatioBoundConstraint from 'src/Interface/IRatioBoundConstraint';
 import { TPvf } from 'src/Interface/TPvf';
 import { TElicitationMethod } from 'src/Types/TElicitationMethod';
-export default function PreferenceElicitation({ criteria, elicitationMethod, manualHost, manualLexicon, manualPath, pvfs, showPercentages, cancelCallback, saveCallback }: {
+export default function PreferenceElicitation({ criteria, elicitationMethod, manualHost, manualLexicon, manualPath, previousCallback, pvfs, showPercentages, cancelCallback, saveCallback, template }: {
     criteria: ICriterion[];
     elicitationMethod: TElicitationMethod;
     manualHost: string;
     manualLexicon: Record<string, IHelpInfo>;
     manualPath: string;
+    previousCallback?: () => void;
     pvfs: Record<string, TPvf>;
     showPercentages: boolean;
     cancelCallback: () => void;
     saveCallback: (preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]) => void;
+    template: string;
 }): JSX.Element;

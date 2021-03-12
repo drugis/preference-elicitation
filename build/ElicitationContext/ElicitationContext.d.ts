@@ -7,12 +7,14 @@ import IRatioBoundConstraint from '../Interface/IRatioBoundConstraint';
 import { TElicitationMethod } from '../Types/TElicitationMethod';
 import IElicitationContext from './IElicitationContext';
 export declare const ElicitationContext: React.Context<IElicitationContext>;
-export declare function ElicitationContextProviderComponent({ elicitationMethod, criteria, showPercentages, pvfs, cancelCallback, saveCallback, children }: {
+export declare function ElicitationContextProviderComponent({ elicitationMethod, criteria, showPercentages, previousCallback, pvfs, cancelCallback, saveCallback, template, children }: {
     elicitationMethod: TElicitationMethod;
     criteria: ICriterion[];
     showPercentages: boolean;
+    previousCallback?: () => void;
     pvfs: Record<string, TPvf>;
     cancelCallback: () => void;
     saveCallback: (preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]) => void;
+    template: string;
     children: any;
 }): JSX.Element;

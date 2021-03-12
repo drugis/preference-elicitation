@@ -19,6 +19,7 @@ export default function RankingButtons({
   setSelectedCriterionId: (criterionId: string) => void;
 }) {
   const {
+    previousCallback,
     currentStep,
     setRanking,
     setCurrentStep,
@@ -49,11 +50,15 @@ export default function RankingButtons({
   }
 
   function handlePreviousClick() {
-    if (currentStep !== 1) {
-      removeRankFromCriterion();
+    if (currentStep === 1) {
+      previousCallback();
+    } else {
+      if (currentStep !== 1) {
+        removeRankFromCriterion();
+      }
+      setSelectedCriterionId('');
+      setCurrentStep(currentStep - 1);
     }
-    setSelectedCriterionId('');
-    setCurrentStep(currentStep - 1);
   }
 
   function removeRankFromCriterion() {
@@ -85,7 +90,7 @@ export default function RankingButtons({
         onClick={handlePreviousClick}
         color="secondary"
         variant="contained"
-        disabled={currentStep === 1}
+        disabled={!previousCallback && currentStep === 1}
       >
         Previous
       </Button>

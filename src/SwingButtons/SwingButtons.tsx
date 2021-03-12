@@ -5,6 +5,7 @@ import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 
 export default function SwingButtons() {
   const {
+    previousCallback,
     currentStep,
     setCurrentStep,
     isNextDisabled,
@@ -18,7 +19,11 @@ export default function SwingButtons() {
   }
 
   function handlePreviousClick() {
-    setCurrentStep(currentStep - 1);
+    if (currentStep === 1) {
+      previousCallback();
+    } else {
+      setCurrentStep(currentStep - 1);
+    }
   }
 
   function cancel() {
@@ -48,7 +53,7 @@ export default function SwingButtons() {
         onClick={handlePreviousClick}
         color="primary"
         variant="contained"
-        disabled={currentStep === 1}
+        disabled={!previousCallback && currentStep === 1}
       >
         Previous
       </Button>
