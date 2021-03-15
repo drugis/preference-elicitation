@@ -66,7 +66,7 @@ export default function MatchingSetImportance() {
         template
       )
     );
-  }, [showPercentages]);
+  }, [showPercentages, template, mostImportantCriterion, currentCriterion]);
 
   return (
     <Grid container item spacing={2}>
@@ -90,8 +90,10 @@ export default function MatchingSetImportance() {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>{mostImportantCriterion.title}</TableCell>
-              <TableCell align="center">
+              <TableCell id="most-important-criterion">
+                {mostImportantCriterion.title}
+              </TableCell>
+              <TableCell align="center" id="most-important-worst">
                 {getWorst(
                   pvfs[mostImportantCriterionId],
                   usePercentagesForMostImportantCriterion
@@ -102,14 +104,16 @@ export default function MatchingSetImportance() {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>{currentCriterion.title}</TableCell>
-              <TableCell align="center">
+              <TableCell id="trade-off-criterion">
+                {currentCriterion.title}
+              </TableCell>
+              <TableCell align="center" id="trade-off-best">
                 {getBest(
                   pvfs[currentCriterion.id],
                   usePercentagesForCurrentCriterion
                 )}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" id="trade-off-worst">
                 {getWorst(
                   pvfs[currentCriterion.id],
                   usePercentagesForCurrentCriterion

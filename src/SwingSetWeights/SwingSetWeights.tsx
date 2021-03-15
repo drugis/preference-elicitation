@@ -28,7 +28,7 @@ export default function SwingSetWeights() {
     setStatement(
       getSwingStatement(criterion, pvfs[criterion.id], usePercentage, template)
     );
-  }, [showPercentages]);
+  }, [showPercentages, template, criterion]);
 
   return (
     <Grid container item spacing={2}>

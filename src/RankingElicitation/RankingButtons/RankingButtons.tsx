@@ -79,7 +79,7 @@ export default function RankingButtons({
     <ButtonGroup>
       <Button
         id="cancel-button"
-        color="primary"
+        color="secondary"
         variant="contained"
         onClick={cancel}
       >
@@ -88,7 +88,7 @@ export default function RankingButtons({
       <Button
         id="previous-button"
         onClick={handlePreviousClick}
-        color="secondary"
+        color="primary"
         variant="contained"
         disabled={!previousCallback && currentStep === 1}
       >

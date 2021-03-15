@@ -30,6 +30,7 @@ export default function PreciseSwingSlider({
     <>
       {significantDigits(sliderValue)}
       <Slider
+        id={`swing-slider-${criterion.id}`}
         value={sliderValue}
         min={1}
         max={100}

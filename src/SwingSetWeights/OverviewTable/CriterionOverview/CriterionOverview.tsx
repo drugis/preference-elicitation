@@ -29,7 +29,7 @@ export default function CriterionOverview({
 
   return (
     <TableRow key={criterion.id}>
-      <TableCell>
+      <TableCell id={`criterion-title-${criterion.id}`}>
         <Tooltip
           disableHoverListener={!criterion.description}
           title={criterion.description ? criterion.description : ''}
@@ -37,16 +37,16 @@ export default function CriterionOverview({
           <span className="criterion-title">{criterion.title}</span>
         </Tooltip>
       </TableCell>
-      <TableCell>
+      <TableCell id={`unit-${criterion.id}`}>
         {getUnitLabel(
           criterion.dataSources[0].unitOfMeasurement,
           showPercentages
         )}
       </TableCell>
-      <TableCell align="center">
+      <TableCell align="center" id={`worst-${criterion.id}`}>
         {getWorst(pvfs[criterion.id], usePercentage)}
       </TableCell>
-      <TableCell align="center">
+      <TableCell align="center" id={`best-${criterion.id}`}>
         {getBest(pvfs[criterion.id], usePercentage)}
       </TableCell>
       <TableCell align="center">{renderSwingSlider()}</TableCell>
