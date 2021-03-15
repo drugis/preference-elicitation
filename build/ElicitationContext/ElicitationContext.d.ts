@@ -15,6 +15,6 @@ export declare function ElicitationContextProviderComponent({ elicitationMethod,
     pvfs: Record<string, TPvf>;
     cancelCallback: () => void;
     saveCallback: (preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]) => void;
-    template: string;
+    template?: string;
     children: any;
 }): JSX.Element;

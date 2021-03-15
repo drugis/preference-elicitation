@@ -6,7 +6,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
 import React, {useContext, useEffect, useState} from 'react';
-import EditTemplate from 'src/EditTemplate/EditTemplate';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import {
   getCurrentCriterion,
@@ -24,8 +23,7 @@ export default function MatchingSetImportance() {
     currentStep,
     getCriterion,
     criteria,
-    template,
-    areWeEditing
+    template
   } = useContext(ElicitationContext);
 
   const mostImportantCriterion = getCriterion(mostImportantCriterionId);
@@ -75,16 +73,12 @@ export default function MatchingSetImportance() {
       <Grid item xs={12}>
         <Typography variant="h6">{`Trade-off between ${mostImportantCriterion.title} and ${currentCriterion.title}`}</Typography>
       </Grid>
-      {areWeEditing ? (
-        <EditTemplate />
-      ) : (
-        <Grid
-          item
-          xs={12}
-          id="matching-statement"
-          dangerouslySetInnerHTML={{__html: statement}}
-        />
-      )}
+      <Grid
+        item
+        xs={12}
+        id="matching-statement"
+        dangerouslySetInnerHTML={{__html: statement}}
+      />
       <Grid item xs={12}>
         <Table size="small">
           <TableHead>

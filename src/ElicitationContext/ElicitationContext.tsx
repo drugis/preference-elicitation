@@ -19,7 +19,6 @@ export const ElicitationContext = createContext<IElicitationContext>(
 );
 
 export function ElicitationContextProviderComponent({
-  areWeEditing,
   elicitationMethod,
   criteria,
   showPercentages,
@@ -28,10 +27,8 @@ export function ElicitationContextProviderComponent({
   cancelCallback,
   saveCallback,
   template,
-  updateTemplateCallback,
   children
 }: {
-  areWeEditing: boolean;
   elicitationMethod: TElicitationMethod;
   criteria: ICriterion[];
   showPercentages: boolean;
@@ -42,7 +39,6 @@ export function ElicitationContextProviderComponent({
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
   ) => void;
   template?: string;
-  updateTemplateCallback?: (newTemplate: string) => void;
   children: any;
 }): JSX.Element {
   const [currentStep, setCurrentStep] = useState(1);
@@ -104,7 +100,6 @@ export function ElicitationContextProviderComponent({
   return (
     <ElicitationContext.Provider
       value={{
-        areWeEditing,
         currentStep,
         isNextDisabled,
         mostImportantCriterionId,
@@ -125,8 +120,7 @@ export function ElicitationContextProviderComponent({
         setPreferences,
         cancelCallback,
         saveCallback,
-        setRanking,
-        updateTemplateCallback
+        setRanking
       }}
     >
       {children}

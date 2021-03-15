@@ -14,7 +14,6 @@ import {TElicitationMethod} from 'src/Types/TElicitationMethod';
 import {ElicitationContextProviderComponent} from '../ElicitationContext/ElicitationContext';
 
 export default function PreferenceElicitation({
-  areWeEditing,
   criteria,
   elicitationMethod,
   manualHost,
@@ -25,10 +24,8 @@ export default function PreferenceElicitation({
   showPercentages,
   cancelCallback,
   saveCallback,
-  template,
-  updateTemplateCallback
+  template
 }: {
-  areWeEditing: boolean;
   criteria: ICriterion[];
   elicitationMethod: TElicitationMethod;
   manualHost: string;
@@ -42,7 +39,6 @@ export default function PreferenceElicitation({
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
   ) => void;
   template?: string;
-  updateTemplateCallback?: (newTemplate: string) => void;
 }): JSX.Element {
   function renderElicitation(
     elicitationMethod: TElicitationMethod
@@ -61,7 +57,6 @@ export default function PreferenceElicitation({
 
   return (
     <ElicitationContextProviderComponent
-      areWeEditing={areWeEditing}
       previousCallback={previousCallback}
       criteria={criteria}
       elicitationMethod={elicitationMethod}
@@ -70,7 +65,6 @@ export default function PreferenceElicitation({
       cancelCallback={cancelCallback}
       saveCallback={saveCallback}
       template={template}
-      updateTemplateCallback={updateTemplateCallback}
     >
       <HelpContextProviderComponent
         lexicon={manualLexicon}

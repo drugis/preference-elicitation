@@ -7,7 +7,6 @@ import IRatioBoundConstraint from '../Interface/IRatioBoundConstraint';
 import {TElicitationMethod} from '../Types/TElicitationMethod';
 
 export default interface IElicitationContext {
-  areWeEditing: boolean;
   currentStep: number;
   isNextDisabled: boolean;
   mostImportantCriterionId: string;
@@ -40,5 +39,4 @@ export default interface IElicitationContext {
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
   ) => void;
   setRanking: (criterionId: string, rank: number) => void;
-  updateTemplateCallback: (template: string) => void;
 }
