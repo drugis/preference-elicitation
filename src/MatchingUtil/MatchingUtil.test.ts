@@ -3,8 +3,7 @@ import {IPieceWiseLinearPvf} from 'src/Interface/IPieceWiseLinearPvf';
 import {
   calculateImportance,
   determineStepSize,
-  getCurrentCriterion,
-  getMatchingStatement
+  getCurrentCriterion
 } from './MatchingUtil';
 
 describe('MatchingUtil', () => {
@@ -83,18 +82,19 @@ describe('MatchingUtil', () => {
   });
 
   describe('getMatchingStatement', () => {
-    it('should return a complete matching statement', () => {
-      const mostImportantCriterion = criteria[0];
-      const currentCriterion = criteria[1];
-      const result: string = getMatchingStatement(
-        mostImportantCriterion,
-        currentCriterion
-      );
+    // it('should return a complete matching statement', () => {
+    //   const mostImportantCriterion = criteria[0];
+    //   const currentCriterion = criteria[1];
+    //   const result: string = getMatchingStatement(
+    //     mostImportantCriterion,
+    //     currentCriterion
+    //   );
 
-      const expectedResult =
-        'How much better should title1 minimally become to justify the worsening of title2?';
-      expect(result).toEqual(expectedResult);
-    });
+    //   const expectedResult =
+    //     'How much better should title1 minimally become to justify the worsening of title2?';
+    //   expect(result).toEqual(expectedResult);
+    // });
+    fail();
   });
 
   describe('getCurrentCriterion', () => {

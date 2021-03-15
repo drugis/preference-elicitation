@@ -22,19 +22,23 @@ export function ElicitationContextProviderComponent({
   elicitationMethod,
   criteria,
   showPercentages,
+  previousCallback,
   pvfs,
   cancelCallback,
   saveCallback,
+  template,
   children
 }: {
   elicitationMethod: TElicitationMethod;
   criteria: ICriterion[];
   showPercentages: boolean;
+  previousCallback?: () => void;
   pvfs: Record<string, TPvf>;
   cancelCallback: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
   ) => void;
+  template?: string;
   children: any;
 }): JSX.Element {
   const [currentStep, setCurrentStep] = useState(1);
@@ -105,7 +109,9 @@ export function ElicitationContextProviderComponent({
         pvfs,
         criteria,
         rankings,
+        template,
         getCriterion,
+        previousCallback,
         setCurrentStep,
         setIsNextDisabled,
         setMostImportantCriterionId: setMostImportantCriterionAndPreferences,

@@ -5,7 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Typography from '@material-ui/core/Typography';
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import {
   getCurrentCriterion,
@@ -22,7 +22,8 @@ export default function MatchingSetImportance() {
     mostImportantCriterionId,
     currentStep,
     getCriterion,
-    criteria
+    criteria,
+    template
   } = useContext(ElicitationContext);
 
   const mostImportantCriterion = getCriterion(mostImportantCriterionId);
@@ -36,16 +37,36 @@ export default function MatchingSetImportance() {
   );
   const currentUnitType =
     currentCriterion.dataSources[0].unitOfMeasurement.type;
-  const statement = getMatchingStatement(
-    mostImportantCriterion,
-    currentCriterion
-  );
 
   const usePercentagesForMostImportantCriterion =
     showPercentages && canBePercentage(mostImportantUnitType);
 
   const usePercentagesForCurrentCriterion =
     showPercentages && canBePercentage(currentUnitType);
+
+  const [statement, setStatement] = useState<string>(
+    getMatchingStatement(
+      mostImportantCriterion,
+      currentCriterion,
+      usePercentagesForMostImportantCriterion,
+      usePercentagesForCurrentCriterion,
+      pvfs,
+      template
+    )
+  );
+
+  useEffect(() => {
+    setStatement(
+      getMatchingStatement(
+        mostImportantCriterion,
+        currentCriterion,
+        usePercentagesForMostImportantCriterion,
+        usePercentagesForCurrentCriterion,
+        pvfs,
+        template
+      )
+    );
+  }, [showPercentages, template, mostImportantCriterion, currentCriterion]);
 
   return (
     <Grid container item spacing={2}>
@@ -69,8 +90,10 @@ export default function MatchingSetImportance() {
           </TableHead>
           <TableBody>
             <TableRow>
-              <TableCell>{mostImportantCriterion.title}</TableCell>
-              <TableCell align="center">
+              <TableCell id="most-important-criterion">
+                {mostImportantCriterion.title}
+              </TableCell>
+              <TableCell align="center" id="most-important-worst">
                 {getWorst(
                   pvfs[mostImportantCriterionId],
                   usePercentagesForMostImportantCriterion
@@ -81,14 +104,16 @@ export default function MatchingSetImportance() {
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>{currentCriterion.title}</TableCell>
-              <TableCell align="center">
+              <TableCell id="trade-off-criterion">
+                {currentCriterion.title}
+              </TableCell>
+              <TableCell align="center" id="trade-off-best">
                 {getBest(
                   pvfs[currentCriterion.id],
                   usePercentagesForCurrentCriterion
                 )}
               </TableCell>
-              <TableCell align="center">
+              <TableCell align="center" id="trade-off-worst">
                 {getWorst(
                   pvfs[currentCriterion.id],
                   usePercentagesForCurrentCriterion

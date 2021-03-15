@@ -19,22 +19,26 @@ export default function PreferenceElicitation({
   manualHost,
   manualLexicon,
   manualPath,
+  previousCallback,
   pvfs,
   showPercentages,
   cancelCallback,
-  saveCallback
+  saveCallback,
+  template
 }: {
   criteria: ICriterion[];
   elicitationMethod: TElicitationMethod;
   manualHost: string;
   manualLexicon: Record<string, IHelpInfo>;
   manualPath: string;
+  previousCallback?: () => void;
   pvfs: Record<string, TPvf>;
   showPercentages: boolean;
   cancelCallback: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
   ) => void;
+  template?: string;
 }): JSX.Element {
   function renderElicitation(
     elicitationMethod: TElicitationMethod
@@ -53,12 +57,14 @@ export default function PreferenceElicitation({
 
   return (
     <ElicitationContextProviderComponent
+      previousCallback={previousCallback}
       criteria={criteria}
       elicitationMethod={elicitationMethod}
       showPercentages={showPercentages}
       pvfs={pvfs}
       cancelCallback={cancelCallback}
       saveCallback={saveCallback}
+      template={template}
     >
       <HelpContextProviderComponent
         lexicon={manualLexicon}

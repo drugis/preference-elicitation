@@ -3,7 +3,7 @@ import ICriterion from 'src/Interface/ICriterion';
 import IExactSwingRatio from 'src/Interface/IExactSwingRatio';
 import IRatioBoundConstraint from 'src/Interface/IRatioBoundConstraint';
 import {TPvf} from 'src/Interface/TPvf';
-import {canBePercentage, getBest, getUnitLabel, getWorst} from 'src/Util/util';
+import {getBest, getUnitLabel, getWorst} from 'src/Util/util';
 
 export const DEFAULT_PRECISE_TEMPLATE =
   "You've indicated that improving %criterion1% from %worst1% %unit1% to %best1% %unit1% is the most important (i.e. it has 100% importance). Now indicate the relative importance (in %) to this improvement of each other criterion's improvement using the sliders below.";
@@ -54,12 +54,14 @@ export function buildInitialImprecisePreferences(
 export function getSwingStatement(
   criterion: ICriterion,
   pvf: TPvf,
-  showPercentages: boolean
+  usePercentage: boolean,
+  template?: string
 ): string {
   const unit = criterion.dataSources[0].unitOfMeasurement;
-  const label = getUnitLabel(unit, showPercentages);
-  const usePercentage = showPercentages && canBePercentage(unit.type);
-  return DEFAULT_PRECISE_TEMPLATE.replace(/%criterion1%/gi, criterion.title)
+  const label = getUnitLabel(unit, usePercentage);
+  const swingTemplate = template ? template : DEFAULT_PRECISE_TEMPLATE;
+  return swingTemplate
+    .replace(/%criterion1%/gi, criterion.title)
     .replace(/%unit1%/gi, label)
     .replace(/%worst1%/gi, String(getWorst(pvf, usePercentage)))
     .replace(/%best1%/gi, String(getBest(pvf, usePercentage)));

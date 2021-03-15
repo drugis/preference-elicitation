@@ -18,7 +18,9 @@ export default interface IElicitationContext {
   pvfs: Record<string, TPvf>;
   criteria: ICriterion[];
   rankings: Record<string, IRankingAnswer>;
+  template: string;
   getCriterion: (criterionId: string) => ICriterion;
+  previousCallback: () => void;
   setCurrentStep: (newStep: number) => void;
   setIsNextDisabled: (isNextDisabled: boolean) => void;
   setMostImportantCriterionId: (criterionId: string) => void;

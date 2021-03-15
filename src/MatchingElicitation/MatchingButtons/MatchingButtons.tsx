@@ -6,6 +6,7 @@ import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 
 export default function MatchingButtons() {
   const {
+    previousCallback,
     isNextDisabled,
     setIsNextDisabled,
     currentStep,
@@ -33,8 +34,12 @@ export default function MatchingButtons() {
   }
 
   function handlePreviousClick(): void {
-    setIsNextDisabled(false);
-    setCurrentStep(currentStep - 1);
+    if (currentStep === 1) {
+      previousCallback();
+    } else {
+      setIsNextDisabled(false);
+      setCurrentStep(currentStep - 1);
+    }
   }
 
   function cancel(): void {
@@ -45,7 +50,7 @@ export default function MatchingButtons() {
     <ButtonGroup>
       <Button
         id="cancel-button"
-        color="primary"
+        color="secondary"
         variant="contained"
         onClick={cancel}
       >
@@ -54,9 +59,9 @@ export default function MatchingButtons() {
       <Button
         id="previous-button"
         onClick={handlePreviousClick}
-        color="secondary"
+        color="primary"
         variant="contained"
-        disabled={currentStep === 1}
+        disabled={!previousCallback && currentStep === 1}
       >
         Previous
       </Button>
