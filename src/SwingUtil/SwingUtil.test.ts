@@ -76,7 +76,7 @@ describe('SwingUtil', () => {
   });
 
   describe('getSwingStatement', () => {
-    it('should return a complete matching statement', () => {
+    it('should return a complete default swing statement', () => {
       const showPercentages = false;
       const pvf: ILinearPvf = {
         direction: 'increasing',
@@ -93,7 +93,25 @@ describe('SwingUtil', () => {
       expect(result).toEqual(expectedResult);
     });
 
-    it('should return a complete matching statement as percentages', () => {
+    it('should return a complete swing statement using a template', () => {
+      const showPercentages = false;
+      const pvf: ILinearPvf = {
+        direction: 'increasing',
+        range: [0, 1],
+        type: 'linear'
+      };
+      const template = 'Template %criterion1%.';
+      const result: string = getSwingStatement(
+        criteria[0],
+        pvf,
+        showPercentages,
+        template
+      );
+      const expectedResult = 'Template title1.';
+      expect(result).toEqual(expectedResult);
+    });
+
+    it('should return a complete swing statement as percentages', () => {
       const showPercentages = true;
       const pvf: ILinearPvf = {
         direction: 'increasing',
@@ -110,7 +128,7 @@ describe('SwingUtil', () => {
       expect(result).toEqual(expectedResult);
     });
 
-    it('should return a complete matching statement as decimals', () => {
+    it('should return a complete swing statement as decimals', () => {
       const showPercentages = false;
       const pvf: ILinearPvf = {
         direction: 'increasing',

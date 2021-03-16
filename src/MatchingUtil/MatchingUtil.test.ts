@@ -1,24 +1,29 @@
 import ICriterion from 'src/Interface/ICriterion';
+import {ILinearPvf} from 'src/Interface/ILinearPvf';
 import {IPieceWiseLinearPvf} from 'src/Interface/IPieceWiseLinearPvf';
 import {
   calculateImportance,
   determineStepSize,
-  getCurrentCriterion
+  getCurrentCriterion,
+  getMatchingStatement
 } from './MatchingUtil';
 
 describe('MatchingUtil', () => {
   const criteria: ICriterion[] = [
     {
       id: 'critId1',
-      title: 'title1'
+      title: 'title1',
+      dataSources: [{unitOfMeasurement: {type: 'custom'}}]
     } as ICriterion,
     {
       id: 'critId2',
-      title: 'title2'
+      title: 'title2',
+      dataSources: [{unitOfMeasurement: {type: 'custom'}}]
     } as ICriterion,
     {
       id: 'critId3',
-      title: 'title3'
+      title: 'title3',
+      dataSources: [{unitOfMeasurement: {type: 'custom'}}]
     } as ICriterion
   ];
 
@@ -82,19 +87,52 @@ describe('MatchingUtil', () => {
   });
 
   describe('getMatchingStatement', () => {
-    // it('should return a complete matching statement', () => {
-    //   const mostImportantCriterion = criteria[0];
-    //   const currentCriterion = criteria[1];
-    //   const result: string = getMatchingStatement(
-    //     mostImportantCriterion,
-    //     currentCriterion
-    //   );
+    const mostImportantCriterion = criteria[0];
+    const currentCriterion = criteria[1];
+    const usePercentagesForMostImportantCriterion = true;
+    const usePercentagesForCurrentCriterion = true;
+    const pvfs: Record<string, ILinearPvf> = {
+      critId1: {
+        direction: 'increasing',
+        range: [0, 1],
+        type: 'linear'
+      },
+      critId2: {
+        direction: 'increasing',
+        range: [0, 1],
+        type: 'linear'
+      }
+    };
 
-    //   const expectedResult =
-    //     'How much better should title1 minimally become to justify the worsening of title2?';
-    //   expect(result).toEqual(expectedResult);
-    // });
-    fail();
+    it('should return a complete default matching statement', () => {
+      const result: string = getMatchingStatement(
+        mostImportantCriterion,
+        currentCriterion,
+        usePercentagesForMostImportantCriterion,
+        usePercentagesForCurrentCriterion,
+        pvfs,
+        undefined
+      );
+
+      const expectedResult =
+        'How much better should title1 minimally become to justify the worsening of title2?';
+      expect(result).toEqual(expectedResult);
+    });
+
+    it('should return a complete matching statement using a template', () => {
+      const template = 'Template %criterion1% %criterion2%?';
+      const result: string = getMatchingStatement(
+        mostImportantCriterion,
+        currentCriterion,
+        usePercentagesForMostImportantCriterion,
+        usePercentagesForCurrentCriterion,
+        pvfs,
+        template
+      );
+
+      const expectedResult = 'Template title1 title2?';
+      expect(result).toEqual(expectedResult);
+    });
   });
 
   describe('getCurrentCriterion', () => {
