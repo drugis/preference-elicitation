@@ -40,7 +40,7 @@ module.exports = {
         amd: 'lodash',
         root: '_' // indicates global variable
       },
-      'help-pupup': 'help-popup'
+      'help-popup': 'help-popup'
     },
     /@material-ui\/.*/
   ]
