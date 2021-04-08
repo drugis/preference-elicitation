@@ -1,6 +1,6 @@
 {
   "name": "preference-elicitation",
-  "version": "1.0.0-RC1",
+  "version": "1.0.1",
   "description": "Module for eliciting preferences",
   "repository": {
     "type": "git",
