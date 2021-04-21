@@ -48,14 +48,18 @@ export default function MatchingButtons() {
 
   return (
     <ButtonGroup>
-      <Button
-        id="cancel-button"
-        color="secondary"
-        variant="contained"
-        onClick={cancel}
-      >
-        Cancel
-      </Button>
+      {cancelCallback ? (
+        <Button
+          id="cancel-button"
+          color="secondary"
+          variant="contained"
+          onClick={cancel}
+        >
+          Cancel
+        </Button>
+      ) : (
+        <></>
+      )}
       <Button
         id="previous-button"
         onClick={handlePreviousClick}

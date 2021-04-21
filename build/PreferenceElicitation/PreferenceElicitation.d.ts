@@ -15,7 +15,7 @@ export default function PreferenceElicitation({ criteria, elicitationMethod, man
     previousCallback?: () => void;
     pvfs: Record<string, TPvf>;
     showPercentages: boolean;
-    cancelCallback: () => void;
+    cancelCallback?: () => void;
     saveCallback: (preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]) => void;
     template?: string;
 }): JSX.Element;

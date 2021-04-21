@@ -34,7 +34,7 @@ export function ElicitationContextProviderComponent({
   showPercentages: boolean;
   previousCallback?: () => void;
   pvfs: Record<string, TPvf>;
-  cancelCallback: () => void;
+  cancelCallback?: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
   ) => void;

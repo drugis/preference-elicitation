@@ -34,7 +34,7 @@ export default function PreferenceElicitation({
   previousCallback?: () => void;
   pvfs: Record<string, TPvf>;
   showPercentages: boolean;
-  cancelCallback: () => void;
+  cancelCallback?: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
   ) => void;
