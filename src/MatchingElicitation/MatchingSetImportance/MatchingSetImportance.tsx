@@ -73,12 +73,9 @@ export default function MatchingSetImportance() {
       <Grid item xs={12}>
         <Typography variant="h6">{`Trade-off between ${mostImportantCriterion.title} and ${currentCriterion.title}`}</Typography>
       </Grid>
-      <Grid
-        item
-        xs={12}
-        id="matching-statement"
-        dangerouslySetInnerHTML={{__html: statement}}
-      />
+      <Grid item xs={12} id="matching-statement">
+        <Typography dangerouslySetInnerHTML={{__html: statement}}></Typography>
+      </Grid>
       <Grid item xs={12}>
         <Table size="small">
           <TableHead>

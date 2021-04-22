@@ -42,7 +42,9 @@ export default function RankingElicitation() {
       </Grid>
       <Grid item xs={3} container alignItems="center" justify="flex-end">
         <Grid item id="step-counter">
-          Step {currentStep} of {totalSteps}
+          <Typography>
+            Step {currentStep} of {totalSteps}
+          </Typography>
         </Grid>
       </Grid>
     </Grid>

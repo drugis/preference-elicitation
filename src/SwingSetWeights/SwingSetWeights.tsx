@@ -1,3 +1,4 @@
+import {Typography} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import React, {useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
@@ -32,12 +33,9 @@ export default function SwingSetWeights() {
 
   return (
     <Grid container item spacing={2}>
-      <Grid
-        item
-        xs={12}
-        id={`${elicitationMethod}-swing-statement`}
-        dangerouslySetInnerHTML={{__html: statement}}
-      />
+      <Grid item xs={12} id={`${elicitationMethod}-swing-statement`}>
+        <Typography dangerouslySetInnerHTML={{__html: statement}}></Typography>
+      </Grid>
       <Grid item xs={12}>
         <OverviewTable />
       </Grid>

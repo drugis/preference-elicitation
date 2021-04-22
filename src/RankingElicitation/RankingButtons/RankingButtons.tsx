@@ -76,7 +76,7 @@ export default function RankingButtons({
   }
 
   return (
-    <ButtonGroup>
+    <ButtonGroup size="small">
       {cancelCallback ? (
         <Button
           id="cancel-button"

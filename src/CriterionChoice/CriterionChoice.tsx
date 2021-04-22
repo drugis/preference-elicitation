@@ -1,3 +1,4 @@
+import {FormControlLabel} from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
 import Tooltip from '@material-ui/core/Tooltip';
 import React, {useContext} from 'react';
@@ -14,10 +15,9 @@ export default function CriterionChoice({criterion}: {criterion: ICriterion}) {
   const worst = getWorst(pvf, usePercentage);
   const best = getBest(pvf, usePercentage);
 
-  return (
-    <label id={`ranking-choice-${criterion.id}`}>
-      <Radio value={criterion.id} />
-      {pvf.direction}{' '}
+  const label: JSX.Element = (
+    <>
+      {`${pvf.direction} `}
       <Tooltip
         disableHoverListener={!criterion.description}
         title={criterion.description ? criterion.description : ''}
@@ -30,6 +30,14 @@ export default function CriterionChoice({criterion}: {criterion: ICriterion}) {
         </span>
       </Tooltip>
       {` from ${worst} to ${best}`}
-    </label>
+    </>
+  );
+
+  return (
+    <FormControlLabel
+      id={`ranking-choice-${criterion.id}`}
+      control={<Radio value={criterion.id} color="primary" />}
+      label={label}
+    />
   );
 }

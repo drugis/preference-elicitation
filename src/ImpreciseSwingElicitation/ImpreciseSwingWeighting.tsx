@@ -28,7 +28,7 @@ export default function ImpreciseSwingWeighting() {
       </Grid>
       <Grid item xs={3} container alignItems="center" justify="flex-end">
         <Grid item id="step-counter">
-          Step {currentStep} of 2
+          <Typography>Step {currentStep} of 2</Typography>
         </Grid>
       </Grid>
     </Grid>
