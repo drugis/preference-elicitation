@@ -19,6 +19,7 @@ export default interface IElicitationContext {
   criteria: ICriterion[];
   rankings: Record<string, IRankingAnswer>;
   template: string;
+  stepSizeByCriterion: Record<string, number>;
   getCriterion: (criterionId: string) => ICriterion;
   previousCallback: () => void;
   setCurrentStep: (newStep: number) => void;

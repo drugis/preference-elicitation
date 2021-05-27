@@ -1,10 +1,7 @@
 import Slider from '@material-ui/core/Slider';
 import React, {useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
-import {
-  calculateImportance,
-  determineStepSize
-} from 'src/MatchingUtil/MatchingUtil';
+import {calculateImportance} from 'src/MatchingUtil/MatchingUtil';
 import significantDigits, {
   canBePercentage,
   getBest,
@@ -23,11 +20,13 @@ export default function MatchingSlider({
     setPreference,
     showPercentages,
     pvfs,
-    getCriterion
+    getCriterion,
+    stepSizeByCriterion
   } = useContext(ElicitationContext);
 
   const mostImportantCriterion = getCriterion(mostImportantCriterionId);
   const pvf = pvfs[mostImportantCriterionId];
+  const stepSize = stepSizeByCriterion[mostImportantCriterionId];
 
   const unitType = mostImportantCriterion.dataSources[0].unitOfMeasurement.type;
   const usePercentage = showPercentages && canBePercentage(unitType);
@@ -35,7 +34,6 @@ export default function MatchingSlider({
   const [sliderValue, setSliderValue] = useState<number>(
     getBest(pvfs[mostImportantCriterionId], usePercentage)
   );
-  const [stepSize] = useState<number>(determineStepSize(pvf.range));
 
   useEffect(() => {
     const sliderValue = getBest(pvf, false);
