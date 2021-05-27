@@ -22,7 +22,7 @@ export default function PreferenceElicitation({
   previousCallback,
   pvfs,
   showPercentages,
-  stepSizeByCriterion,
+  stepSizesByCriterion,
   cancelCallback,
   saveCallback,
   template
@@ -35,7 +35,7 @@ export default function PreferenceElicitation({
   previousCallback?: () => void;
   pvfs: Record<string, TPvf>;
   showPercentages: boolean;
-  stepSizeByCriterion: Record<string, number>;
+  stepSizesByCriterion: Record<string, number>;
   cancelCallback?: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
@@ -67,7 +67,7 @@ export default function PreferenceElicitation({
       cancelCallback={cancelCallback}
       saveCallback={saveCallback}
       template={template}
-      stepSizeByCriterion={stepSizeByCriterion}
+      stepSizesByCriterion={stepSizesByCriterion}
     >
       <HelpContextProviderComponent
         lexicon={manualLexicon}

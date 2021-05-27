@@ -27,7 +27,7 @@ export function ElicitationContextProviderComponent({
   cancelCallback,
   saveCallback,
   template,
-  stepSizeByCriterion,
+  stepSizesByCriterion,
   children
 }: {
   elicitationMethod: TElicitationMethod;
@@ -40,7 +40,7 @@ export function ElicitationContextProviderComponent({
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
   ) => void;
   template?: string;
-  stepSizeByCriterion: Record<string, number>;
+  stepSizesByCriterion: Record<string, number>;
   children: any;
 }): JSX.Element {
   const [currentStep, setCurrentStep] = useState(1);
@@ -110,7 +110,7 @@ export function ElicitationContextProviderComponent({
         criteria,
         rankings,
         template,
-        stepSizeByCriterion,
+        stepSizesByCriterion,
         getCriterion,
         previousCallback,
         setCurrentStep,

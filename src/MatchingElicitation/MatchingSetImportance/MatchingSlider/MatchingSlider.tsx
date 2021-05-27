@@ -21,12 +21,12 @@ export default function MatchingSlider({
     showPercentages,
     pvfs,
     getCriterion,
-    stepSizeByCriterion
+    stepSizesByCriterion
   } = useContext(ElicitationContext);
 
   const mostImportantCriterion = getCriterion(mostImportantCriterionId);
   const pvf = pvfs[mostImportantCriterionId];
-  const stepSize = stepSizeByCriterion[mostImportantCriterionId];
+  const stepSize = stepSizesByCriterion[mostImportantCriterionId];
 
   const unitType = mostImportantCriterion.dataSources[0].unitOfMeasurement.type;
   const usePercentage = showPercentages && canBePercentage(unitType);
