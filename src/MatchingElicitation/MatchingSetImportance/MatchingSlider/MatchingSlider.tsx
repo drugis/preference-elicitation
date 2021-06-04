@@ -26,7 +26,12 @@ export default function MatchingSlider({
 
   const mostImportantCriterion = getCriterion(mostImportantCriterionId);
   const pvf = pvfs[mostImportantCriterionId];
+  const worstValue = getWorst(pvf, false);
   const stepSize = stepSizesByCriterion[mostImportantCriterionId];
+  const minSliderValue =
+    pvf.range[0] === worstValue ? pvf.range[0] + stepSize : pvf.range[0];
+  const maxSliderValue =
+    pvf.range[1] === worstValue ? pvf.range[1] - stepSize : pvf.range[1];
 
   const unitType = mostImportantCriterion.dataSources[0].unitOfMeasurement.type;
   const usePercentage = showPercentages && canBePercentage(unitType);
@@ -46,10 +51,7 @@ export default function MatchingSlider({
     newValue: number
   ) {
     setSliderValue(newValue);
-    setIsNextDisabled(
-      significantDigits(newValue) ===
-        getWorst(pvfs[mostImportantCriterion.id], false)
-    );
+    setIsNextDisabled(significantDigits(newValue) === worstValue);
     setPreference(currentCriterionId, calculateImportance(newValue, pvf));
   }
 
@@ -65,8 +67,8 @@ export default function MatchingSlider({
       <Slider
         id="matching-slider"
         value={sliderValue}
-        min={pvf.range[0]}
-        max={pvf.range[1]}
+        min={minSliderValue}
+        max={maxSliderValue}
         onChange={handleSliderChanged}
         step={stepSize}
       />
