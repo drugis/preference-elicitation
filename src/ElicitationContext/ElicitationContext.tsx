@@ -38,7 +38,7 @@ export function ElicitationContextProviderComponent({
   cancelCallback?: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
-  ) => void;
+  ) => Promise<any>;
   template?: string;
   stepSizesByCriterion: Record<string, number>;
   children: any;

@@ -2,6 +2,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import React, {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
+import AsyncSingleClickButton from 'src/Util/AsyncSingleClickButton';
 
 export default function SwingButtons() {
   const {
@@ -30,8 +31,8 @@ export default function SwingButtons() {
     cancelCallback();
   }
 
-  function handleSaveButtonClick() {
-    saveCallback(Object.values(preferences));
+  function handleSaveButtonClick(): Promise<any> {
+    return saveCallback(Object.values(preferences));
   }
 
   function isLastStep() {
@@ -62,15 +63,15 @@ export default function SwingButtons() {
         Previous
       </Button>
       {isLastStep() ? (
-        <Button
+        <AsyncSingleClickButton
           disabled={isNextDisabled}
           color="primary"
           id="save-button"
           variant="contained"
-          onClick={handleSaveButtonClick}
+          asyncFunction={handleSaveButtonClick}
         >
           Save
-        </Button>
+        </AsyncSingleClickButton>
       ) : (
         <Button
           disabled={isNextDisabled}

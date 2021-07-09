@@ -3,6 +3,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import _ from 'lodash';
 import React, {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
+import AsyncSingleClickButton from 'src/Util/AsyncSingleClickButton';
 
 export default function MatchingButtons() {
   const {
@@ -21,15 +22,15 @@ export default function MatchingButtons() {
     matchingNext();
   }
 
-  function handleSaveButtonclick(): void {
-    saveCallback(Object.values(preferences));
+  function handleSaveButtonclick(): Promise<any> {
+    return saveCallback(Object.values(preferences));
   }
 
   function matchingNext(): void {
     setCurrentStep(currentStep + 1);
   }
 
-  function isLastStep() {
+  function isLastStep(): boolean {
     return currentStep === _.size(criteria);
   }
 
@@ -70,15 +71,15 @@ export default function MatchingButtons() {
         Previous
       </Button>
       {isLastStep() ? (
-        <Button
+        <AsyncSingleClickButton
           disabled={isNextDisabled}
           color="primary"
           id="save-button"
           variant="contained"
-          onClick={handleSaveButtonclick}
+          asyncFunction={handleSaveButtonclick}
         >
           Save
-        </Button>
+        </AsyncSingleClickButton>
       ) : (
         <Button
           disabled={isNextDisabled}

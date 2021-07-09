@@ -38,6 +38,6 @@ export default interface IElicitationContext {
   cancelCallback: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
-  ) => void;
+  ) => Promise<any>;
   setRanking: (criterionId: string, rank: number) => void;
 }

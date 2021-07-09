@@ -39,7 +39,7 @@ export default function PreferenceElicitation({
   cancelCallback?: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
-  ) => void;
+  ) => Promise<any>;
   template?: string;
 }): JSX.Element {
   function renderElicitation(

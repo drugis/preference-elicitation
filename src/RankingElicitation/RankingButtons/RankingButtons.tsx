@@ -10,6 +10,7 @@ import {
   findCriterionIdForRank,
   UNRANKED
 } from 'src/RankingUtil/RankingUtil';
+import AsyncSingleClickButton from 'src/Util/AsyncSingleClickButton';
 
 export default function RankingButtons({
   selectedCriterionId,
@@ -35,18 +36,16 @@ export default function RankingButtons({
     setCurrentStep(currentStep + 1);
   }
 
-  function handleSaveButtonClick() {
-    const finishedRankings: Record<
-      string,
-      IRankingAnswer
-    > = assignMissingRankings(
-      rankings,
-      selectedCriterionId,
-      currentStep,
-      criteria
-    );
+  function handleSaveButtonClick(): Promise<any> {
+    const finishedRankings: Record<string, IRankingAnswer> =
+      assignMissingRankings(
+        rankings,
+        selectedCriterionId,
+        currentStep,
+        criteria
+      );
     const preferences = buildRankingPreferences(_.toArray(finishedRankings));
-    saveCallback(preferences);
+    return saveCallback(preferences);
   }
 
   function handlePreviousClick() {
@@ -99,15 +98,15 @@ export default function RankingButtons({
         Previous
       </Button>
       {isLastStep() ? (
-        <Button
+        <AsyncSingleClickButton
           disabled={!selectedCriterionId}
           color="primary"
           id="save-button"
           variant="contained"
-          onClick={handleSaveButtonClick}
+          asyncFunction={handleSaveButtonClick}
         >
           Save
-        </Button>
+        </AsyncSingleClickButton>
       ) : (
         <Button
           disabled={!selectedCriterionId}
