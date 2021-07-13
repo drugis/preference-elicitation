@@ -14,7 +14,7 @@ export declare function ElicitationContextProviderComponent({ elicitationMethod,
     previousCallback?: () => void;
     pvfs: Record<string, TPvf>;
     cancelCallback?: () => void;
-    saveCallback: (preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]) => Promise<any>;
+    saveCallback: (preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[], thresholdValuesByCriterion?: Record<string, number>) => Promise<any>;
     template?: string;
     stepSizesByCriterion: Record<string, number>;
     children: any;

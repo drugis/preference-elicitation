@@ -6,3 +6,6 @@ export declare function getWorst(pvf: TPvf, usePercentage: boolean): number;
 export default function significantDigits(x: number, precision?: number): number;
 export declare function getPercentifiedValue(value: number, usePercentage: boolean): number;
 export declare function getUnitLabel(unit: IUnitOfMeasurement, showPercentages: boolean): string;
+export declare function getPercentifiedValueLabel(value: number, usePercentage: boolean): string;
+export declare function percentify(usePercentage: boolean, value: number): number;
+export declare function depercentify(usePercentage: boolean, value: number): number;

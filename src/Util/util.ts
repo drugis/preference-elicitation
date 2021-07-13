@@ -63,3 +63,18 @@ export function getUnitLabel(
     return unit.label;
   }
 }
+
+export function getPercentifiedValueLabel(
+  value: number,
+  usePercentage: boolean
+): string {
+  return getPercentifiedValue(value, usePercentage).toString();
+}
+
+export function percentify(usePercentage: boolean, value: number): number {
+  return usePercentage ? significantDigits(value * 100) : value;
+}
+
+export function depercentify(usePercentage: boolean, value: number): number {
+  return usePercentage ? significantDigits(value / 100) : value;
+}

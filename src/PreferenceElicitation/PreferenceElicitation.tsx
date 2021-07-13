@@ -10,6 +10,8 @@ import {TPvf} from 'src/Interface/TPvf';
 import MatchingElicitation from 'src/MatchingElicitation/MatchingElicitation';
 import PreciseSwingWeighting from 'src/PreciseSwingElicitation/PreciseSwingWeighting';
 import RankingElicitation from 'src/RankingElicitation/RankingElicitation';
+import ThresholdElicitation from 'src/ThresholdElicitation/ThresholdElicitation';
+import {ThresholdElicitationContextProviderComponent} from 'src/ThresholdElicitation/ThresholdElicitationContext';
 import {TElicitationMethod} from 'src/Types/TElicitationMethod';
 import {ElicitationContextProviderComponent} from '../ElicitationContext/ElicitationContext';
 
@@ -38,7 +40,8 @@ export default function PreferenceElicitation({
   stepSizesByCriterion: Record<string, number>;
   cancelCallback?: () => void;
   saveCallback: (
-    preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]
+    preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[],
+    thresholdValuesByCriterion?: Record<string, number>
   ) => Promise<any>;
   template?: string;
 }): JSX.Element {
@@ -54,6 +57,12 @@ export default function PreferenceElicitation({
         return <MatchingElicitation />;
       case 'ranking':
         return <RankingElicitation />;
+      case 'threshold':
+        return (
+          <ThresholdElicitationContextProviderComponent>
+            <ThresholdElicitation />
+          </ThresholdElicitationContextProviderComponent>
+        );
     }
   }
 
