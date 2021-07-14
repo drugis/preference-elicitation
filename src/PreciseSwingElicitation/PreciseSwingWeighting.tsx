@@ -14,7 +14,7 @@ export default function PreciseSwingWeighting() {
 
   return (
     <Grid container justify="center" component={Box} mt={2}>
-      <Grid container item component={Paper} sm={12} md={9}>
+      <Grid container item spacing={4} sm={12} md={9} component={Paper}>
         <Grid item xs={12}>
           <Typography id="swing-weighting-title-header" variant="h4">
             <InlineHelp helpId="swing-weighting">

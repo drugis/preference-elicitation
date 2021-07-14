@@ -1,3 +1,4 @@
+import {Box} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -19,32 +20,34 @@ export default function RankingElicitation() {
   }
 
   return (
-    <Grid container spacing={4} component={Paper}>
-      <Grid item xs={12}>
-        <Typography id="ranking-title-header" variant="h4">
-          <InlineHelp helpId="ranking">Ranking</InlineHelp>
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        <RankingSituation />
-      </Grid>
-      <Grid item xs={12}>
-        <RankingChoices
-          handleSelection={handleSelection}
-          selectedCriterionId={selectedCriterionId}
-        />
-      </Grid>
-      <Grid item xs={9}>
-        <RankingButtons
-          selectedCriterionId={selectedCriterionId}
-          setSelectedCriterionId={setSelectedCriterionId}
-        />
-      </Grid>
-      <Grid item xs={3} container alignItems="center" justify="flex-end">
-        <Grid item id="step-counter">
-          <Typography>
-            Step {currentStep} of {totalSteps}
+    <Grid container justify="center" component={Box} mt={2}>
+      <Grid container item spacing={4} sm={12} md={9} component={Paper}>
+        <Grid item xs={12}>
+          <Typography id="ranking-title-header" variant="h4">
+            <InlineHelp helpId="ranking">Ranking</InlineHelp>
           </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <RankingSituation />
+        </Grid>
+        <Grid item xs={12}>
+          <RankingChoices
+            handleSelection={handleSelection}
+            selectedCriterionId={selectedCriterionId}
+          />
+        </Grid>
+        <Grid item xs={9}>
+          <RankingButtons
+            selectedCriterionId={selectedCriterionId}
+            setSelectedCriterionId={setSelectedCriterionId}
+          />
+        </Grid>
+        <Grid item xs={3} container alignItems="center" justify="flex-end">
+          <Grid item id="step-counter">
+            <Typography>
+              Step {currentStep} of {totalSteps}
+            </Typography>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

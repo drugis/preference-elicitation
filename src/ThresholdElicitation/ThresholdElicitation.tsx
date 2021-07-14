@@ -1,3 +1,4 @@
+import {Box} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -12,27 +13,29 @@ export default function ThresholdElicitation(): JSX.Element {
   const {currentStep} = useContext(ElicitationContext);
 
   return (
-    <Grid container spacing={4}>
-      <Grid item xs={12}>
-        <Typography id="threshold-elicitation-title-header" variant="h4">
-          <InlineHelp helpId="threshold-elicitation">
-            Threshold technique elicitation
-          </InlineHelp>
-        </Typography>
-      </Grid>
-      <Grid item xs={12}>
-        {currentStep === 1 ? (
-          <ThresholdElicitationStep1 />
-        ) : (
-          <ThresholdElicitationStep2 />
-        )}
-      </Grid>
-      <Grid item xs={9}>
-        <ThresholdElicitationButtons />
-      </Grid>
-      <Grid item xs={3} container alignItems="center" justify="flex-end">
-        <Grid item id="step-counter">
-          <Typography>Step {currentStep} of 2</Typography>
+    <Grid container justify="center" component={Box} mt={2}>
+      <Grid container item spacing={4} sm={12} md={9} component={Paper}>
+        <Grid item xs={12}>
+          <Typography id="threshold-elicitation-title-header" variant="h4">
+            <InlineHelp helpId="threshold-elicitation">
+              Threshold technique elicitation
+            </InlineHelp>
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          {currentStep === 1 ? (
+            <ThresholdElicitationStep1 />
+          ) : (
+            <ThresholdElicitationStep2 />
+          )}
+        </Grid>
+        <Grid item xs={9}>
+          <ThresholdElicitationButtons />
+        </Grid>
+        <Grid item xs={3} container alignItems="center" justify="flex-end">
+          <Grid item id="step-counter">
+            <Typography>Step {currentStep} of 2</Typography>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
