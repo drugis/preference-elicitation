@@ -45,11 +45,11 @@ export function ThresholdElicitationContextProviderComponent({
 
   useEffect(() => {
     if (mostImportantCriterionId) {
-      const referenceCriterion = getCriterion(mostImportantCriterionId);
-      const stepSize = stepSizesByCriterion[referenceCriterion.id];
-      setEquivalentChangeForReferenceCriterion(stepSize);
+      setEquivalentChangeForReferenceCriterion(
+        stepSizesByCriterion[mostImportantCriterionId]
+      );
     }
-  }, [getCriterion, mostImportantCriterionId, stepSizesByCriterion]);
+  }, [mostImportantCriterionId, stepSizesByCriterion]);
 
   useEffect(() => {
     if (mostImportantCriterionId && equivalentChangeForReferenceCriterion) {

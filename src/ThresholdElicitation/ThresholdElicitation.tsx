@@ -12,7 +12,7 @@ export default function ThresholdElicitation(): JSX.Element {
   const {currentStep} = useContext(ElicitationContext);
 
   return (
-    <Grid container item spacing={4} sm={12} md={9} component={Paper}>
+    <Grid container spacing={4}>
       <Grid item xs={12}>
         <Typography id="threshold-elicitation-title-header" variant="h4">
           <InlineHelp helpId="threshold-elicitation">

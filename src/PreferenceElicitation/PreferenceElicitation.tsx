@@ -1,4 +1,3 @@
-import {Box, Grid} from '@material-ui/core';
 import {HelpContextProviderComponent, IHelpInfo} from 'help-popup';
 import React from 'react';
 import ImpreciseSwingWeighting from 'src/ImpreciseSwingElicitation/ImpreciseSwingWeighting';
@@ -45,27 +44,6 @@ export default function PreferenceElicitation({
   ) => Promise<any>;
   template?: string;
 }): JSX.Element {
-  function renderElicitation(
-    elicitationMethod: TElicitationMethod
-  ): JSX.Element {
-    switch (elicitationMethod) {
-      case 'precise':
-        return <PreciseSwingWeighting />;
-      case 'imprecise':
-        return <ImpreciseSwingWeighting />;
-      case 'matching':
-        return <MatchingElicitation />;
-      case 'ranking':
-        return <RankingElicitation />;
-      case 'threshold':
-        return (
-          <ThresholdElicitationContextProviderComponent>
-            <ThresholdElicitation />
-          </ThresholdElicitationContextProviderComponent>
-        );
-    }
-  }
-
   return (
     <ElicitationContextProviderComponent
       previousCallback={previousCallback}
@@ -83,10 +61,31 @@ export default function PreferenceElicitation({
         host={manualHost}
         path={manualPath}
       >
-        <Grid container justify="center" component={Box} mt={2}>
-          {renderElicitation(elicitationMethod)}
-        </Grid>
+        <Elicitation elicitationMethod={elicitationMethod} />
       </HelpContextProviderComponent>
     </ElicitationContextProviderComponent>
   );
+}
+
+function Elicitation({
+  elicitationMethod
+}: {
+  elicitationMethod: TElicitationMethod;
+}): JSX.Element {
+  switch (elicitationMethod) {
+    case 'precise':
+      return <PreciseSwingWeighting />;
+    case 'imprecise':
+      return <ImpreciseSwingWeighting />;
+    case 'matching':
+      return <MatchingElicitation />;
+    case 'ranking':
+      return <RankingElicitation />;
+    case 'threshold':
+      return (
+        <ThresholdElicitationContextProviderComponent>
+          <ThresholdElicitation />
+        </ThresholdElicitationContextProviderComponent>
+      );
+  }
 }

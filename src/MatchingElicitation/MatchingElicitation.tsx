@@ -14,7 +14,7 @@ export default function MatchingElicitation() {
   const totalSteps = _.size(criteria);
 
   return (
-    <Grid container item spacing={4} sm={12} md={9} component={Paper}>
+    <Grid container spacing={4} component={Paper}>
       <Grid item xs={12}>
         <Typography id="matching-title-header" variant="h4">
           <InlineHelp helpId="matching">Matching</InlineHelp>

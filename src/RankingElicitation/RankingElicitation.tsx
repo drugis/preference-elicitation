@@ -19,7 +19,7 @@ export default function RankingElicitation() {
   }
 
   return (
-    <Grid container item spacing={4} sm={12} md={9} component={Paper}>
+    <Grid container spacing={4} component={Paper}>
       <Grid item xs={12}>
         <Typography id="ranking-title-header" variant="h4">
           <InlineHelp helpId="ranking">Ranking</InlineHelp>

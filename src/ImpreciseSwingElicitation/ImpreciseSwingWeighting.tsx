@@ -12,7 +12,7 @@ export default function ImpreciseSwingWeighting() {
   const {currentStep} = useContext(ElicitationContext);
 
   return (
-    <Grid container item spacing={4} sm={12} md={9} component={Paper}>
+    <Grid container spacing={4} component={Paper}>
       <Grid item xs={12}>
         <Typography id="swing-weighting-title-header" variant="h4">
           <InlineHelp helpId="imprecise-swing-weighting">
