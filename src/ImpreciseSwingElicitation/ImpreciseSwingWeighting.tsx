@@ -32,7 +32,7 @@ export default function ImpreciseSwingWeighting() {
           <Grid item id="step-counter">
             <Typography>Step {currentStep} of 2</Typography>
           </Grid>
-        </Grid>{' '}
+        </Grid>
       </Grid>
     </Grid>
   );
