@@ -17,6 +17,6 @@ export default function PreferenceElicitation({ criteria, elicitationMethod, man
     showPercentages: boolean;
     stepSizesByCriterion: Record<string, number>;
     cancelCallback?: () => void;
-    saveCallback: (preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[]) => Promise<any>;
+    saveCallback: (preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[], thresholdValuesByCriterion?: Record<string, number>) => Promise<any>;
     template?: string;
 }): JSX.Element;

@@ -4,10 +4,12 @@ import IUnitOfMeasurement, {
 } from 'src/Interface/IUnitOfMeasurement';
 import significantDigits, {
   canBePercentage,
+  depercentify,
   getBest,
   getPercentifiedValue,
   getUnitLabel,
-  getWorst
+  getWorst,
+  percentify
 } from './util';
 
 describe('utility', () => {
@@ -194,6 +196,26 @@ describe('utility', () => {
       const showPercentages = false;
       const result = getUnitLabel(unit, showPercentages);
       expect(result).toEqual('');
+    });
+  });
+
+  describe('percentify', () => {
+    it('should return the input value if usePercentage is false', () => {
+      expect(percentify(false, 1)).toEqual(1);
+    });
+
+    it('should return the input * 100 value if usePercentage is true', () => {
+      expect(percentify(true, 1)).toEqual(100);
+    });
+  });
+
+  describe('depercentify', () => {
+    it('should return the input value if usePercentage is false', () => {
+      expect(depercentify(false, 100)).toEqual(100);
+    });
+
+    it('should return the input / 100 value if usePercentage is true', () => {
+      expect(depercentify(true, 100)).toEqual(1);
     });
   });
 });

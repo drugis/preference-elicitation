@@ -1,0 +1,13 @@
+import ICriterion from 'src/Interface/ICriterion';
+import IExactSwingRatio from 'src/Interface/IExactSwingRatio';
+import IUnitOfMeasurement from 'src/Interface/IUnitOfMeasurement';
+import IPvf, { TPvf } from 'src/Interface/TPvf';
+import { TThresholdChangeDirection } from './TThresholdChangeDirection';
+export declare function getInitialValidity(filteredCriteria: ICriterion[]): Record<string, boolean>;
+export declare function buildThresholdPreferences(referenceId: string, equivalentReferenceChange: number, valuesByCriterion: Record<string, number>, pvfs: Record<string, IPvf>): IExactSwingRatio[];
+export declare function calculateReferenceChangeRatio(equivalentReferenceChange: number, [lowerRangeValue, upperRangeValue]: [number, number]): number;
+export declare function calculateInputValuesByCriterion(criteria: ICriterion[], referenceChangeRatio: number, pvfs: Record<string, IPvf>, predefinedStepSizes: Record<string, number>): Record<string, number>;
+export declare function getInitialInputValue(referenceRatio: number, [lowerConfiguredValue, upperConfiguredValue]: [number, number], magnitude: number): number;
+export declare function calculateStatementValues(changeValue: number, pvf: TPvf, elicitationDirection: TThresholdChangeDirection, usePercentage: boolean): number[];
+export declare function getUpperBound(usePercentage: boolean, unit: IUnitOfMeasurement): number;
+export declare function getThresholdValueError(value: number, minValue: number, maxValue: number): string;
