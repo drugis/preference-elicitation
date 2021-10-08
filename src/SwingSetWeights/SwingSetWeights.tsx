@@ -1,6 +1,6 @@
 import {Typography} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import React, {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import {getSwingStatement} from 'src/SwingUtil/SwingUtil';
 import {canBePercentage} from 'src/Util/util';

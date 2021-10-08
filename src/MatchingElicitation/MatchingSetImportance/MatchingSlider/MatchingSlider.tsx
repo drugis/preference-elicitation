@@ -1,5 +1,5 @@
 import Slider from '@material-ui/core/Slider';
-import React, {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import {calculateImportance} from 'src/MatchingUtil/MatchingUtil';
 import significantDigits, {

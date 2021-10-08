@@ -1,6 +1,6 @@
 import {InputAdornment, TextField} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import React, {ChangeEvent, useContext, useState} from 'react';
+import {ChangeEvent, useContext, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ICriterion from 'src/Interface/ICriterion';
 import {

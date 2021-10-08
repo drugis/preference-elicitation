@@ -1,7 +1,7 @@
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import _ from 'lodash';
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import AsyncSingleClickButton from 'src/Util/AsyncSingleClickButton';
 import {ThresholdElicitationContext} from '../ThresholdElicitationContext';

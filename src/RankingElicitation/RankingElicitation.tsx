@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import {InlineHelp} from 'help-popup';
 import _ from 'lodash';
-import React, {ChangeEvent, useContext, useState} from 'react';
+import {ChangeEvent, useContext, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import RankingButtons from './RankingButtons/RankingButtons';
 import RankingChoices from './RankingChoices/RankingChoices';

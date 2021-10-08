@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Typography from '@material-ui/core/Typography';
-import React, {ChangeEvent, useContext} from 'react';
+import {ChangeEvent, useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import {ThresholdElicitationContext} from '../ThresholdElicitationContext';
 import {TThresholdChangeDirection} from '../TThresholdChangeDirection';

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import IExactSwingRatio from 'src/Interface/IExactSwingRatio';
 import IThresholdElicitationContext from './IThresholdElicitationContext';

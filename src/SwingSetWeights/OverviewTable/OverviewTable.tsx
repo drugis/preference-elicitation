@@ -4,7 +4,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import _ from 'lodash';
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ICriterion from 'src/Interface/ICriterion';
 import CriterionOverview from './CriterionOverview/CriterionOverview';

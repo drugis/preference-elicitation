@@ -1,7 +1,7 @@
 import {InputAdornment, TextField} from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import React, {ChangeEvent, useContext, useState} from 'react';
+import {ChangeEvent, useContext, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import {
   getThresholdValueError,

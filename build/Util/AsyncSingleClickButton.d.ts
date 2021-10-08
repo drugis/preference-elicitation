@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { ButtonProps } from '@material-ui/core';
 declare type AsyncButtonProps<T> = {
     asyncFunction: () => Promise<T>;

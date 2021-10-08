@@ -1,6 +1,6 @@
 import {Typography} from '@material-ui/core';
 import Tooltip from '@material-ui/core/Tooltip';
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ICriterion from 'src/Interface/ICriterion';
 import {getUnitLabel} from 'src/Util/util';

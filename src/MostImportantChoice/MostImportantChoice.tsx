@@ -2,7 +2,7 @@ import Grid from '@material-ui/core/Grid';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Typography from '@material-ui/core/Typography';
 import _ from 'lodash';
-import React, {ChangeEvent, useContext} from 'react';
+import {ChangeEvent, useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ICriterion from 'src/Interface/ICriterion';
 import {canBePercentage, getWorst} from 'src/Util/util';
@@ -25,20 +25,17 @@ export default function MostImportantChoice() {
   }
 
   function renderCriterionSituations(): JSX.Element[] {
-    return _.map(
-      criteria,
-      (criterion: ICriterion): JSX.Element => {
-        const unitType = criterion.dataSources[0].unitOfMeasurement.type;
-        const usePercentage = showPercentages && canBePercentage(unitType);
-        return (
-          <CriterionSituation
-            key={criterion.id}
-            criterion={criterion}
-            displayValue={getWorst(pvfs[criterion.id], usePercentage)}
-          />
-        );
-      }
-    );
+    return _.map(criteria, (criterion: ICriterion): JSX.Element => {
+      const unitType = criterion.dataSources[0].unitOfMeasurement.type;
+      const usePercentage = showPercentages && canBePercentage(unitType);
+      return (
+        <CriterionSituation
+          key={criterion.id}
+          criterion={criterion}
+          displayValue={getWorst(pvfs[criterion.id], usePercentage)}
+        />
+      );
+    });
   }
 
   function renderCriterionChoices(): JSX.Element[] {

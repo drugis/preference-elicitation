@@ -1,5 +1,5 @@
 import Grid from '@material-ui/core/Grid';
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {ThresholdElicitationContext} from '../ThresholdElicitationContext';
 import ThresholdElicitationDirectionChoice from '../ThresholdElicitationDirectionChoice/ThresholdElicitationDirectionChoice';
 import ReferenceCriterionChoice from './ReferenceCriterionChoice/ReferenceCriterionChoice';

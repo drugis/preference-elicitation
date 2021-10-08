@@ -1,5 +1,5 @@
 import Slider from '@material-ui/core/Slider';
-import React, {useContext, useEffect, useState} from 'react';
+import {useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ICriterion from 'src/Interface/ICriterion';
 import significantDigits from 'src/Util/util';
@@ -10,9 +10,8 @@ export default function ImpreciseSwingSlider({
   criterion: ICriterion;
 }) {
   const [sliderValue, setSliderValue] = useState<[number, number]>([1, 100]);
-  const {setBoundPreference, mostImportantCriterionId} = useContext(
-    ElicitationContext
-  );
+  const {setBoundPreference, mostImportantCriterionId} =
+    useContext(ElicitationContext);
 
   useEffect(() => {
     setBoundPreference(criterion.id, sliderValue);

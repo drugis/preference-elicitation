@@ -1,7 +1,7 @@
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import _ from 'lodash';
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ICriterion from 'src/Interface/ICriterion';
 import {UNRANKED} from 'src/RankingUtil/RankingUtil';
@@ -9,9 +9,8 @@ import {canBePercentage, getBest, getWorst} from 'src/Util/util';
 import CriterionSituation from '../../CriterionSituation/CriterionSituation';
 
 export default function RankingSituation() {
-  const {rankings, showPercentages, pvfs, criteria} = useContext(
-    ElicitationContext
-  );
+  const {rankings, showPercentages, pvfs, criteria} =
+    useContext(ElicitationContext);
 
   function getValueToDisplay(criterion: ICriterion) {
     const unitType = criterion.dataSources[0].unitOfMeasurement.type;

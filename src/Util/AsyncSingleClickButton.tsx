@@ -1,5 +1,5 @@
 import {Button, ButtonProps} from '@material-ui/core';
-import React, {useCallback, useState} from 'react';
+import {useCallback, useState} from 'react';
 
 type AsyncButtonProps<T> = {
   asyncFunction: () => Promise<T>;

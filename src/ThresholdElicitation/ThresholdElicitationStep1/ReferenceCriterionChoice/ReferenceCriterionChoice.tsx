@@ -2,7 +2,7 @@ import Grid from '@material-ui/core/Grid';
 import Select from '@material-ui/core/Select';
 import Typography from '@material-ui/core/Typography';
 import _ from 'lodash';
-import React, {ChangeEvent, useContext} from 'react';
+import {ChangeEvent, useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ICriterion from 'src/Interface/ICriterion';
 import {ThresholdElicitationContext} from '../../ThresholdElicitationContext';

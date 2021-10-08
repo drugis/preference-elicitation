@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import React, {createContext, useState} from 'react';
+import {createContext, useState} from 'react';
 import IRanking from 'src/Interface/IRanking';
 import IRankingAnswer from 'src/Interface/IRankingAnswer';
 import {TPvf} from 'src/Interface/TPvf';

@@ -1,4 +1,4 @@
-import React from 'react';
+/// <reference types="react" />
 import IRanking from 'src/Interface/IRanking';
 import { TPvf } from 'src/Interface/TPvf';
 import ICriterion from '../Interface/ICriterion';
@@ -6,7 +6,7 @@ import IExactSwingRatio from '../Interface/IExactSwingRatio';
 import IRatioBoundConstraint from '../Interface/IRatioBoundConstraint';
 import { TElicitationMethod } from '../Types/TElicitationMethod';
 import IElicitationContext from './IElicitationContext';
-export declare const ElicitationContext: React.Context<IElicitationContext>;
+export declare const ElicitationContext: import("react").Context<IElicitationContext>;
 export declare function ElicitationContextProviderComponent({ elicitationMethod, criteria, showPercentages, previousCallback, pvfs, cancelCallback, saveCallback, template, stepSizesByCriterion, children }: {
     elicitationMethod: TElicitationMethod;
     criteria: ICriterion[];

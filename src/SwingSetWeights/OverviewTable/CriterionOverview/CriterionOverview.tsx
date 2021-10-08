@@ -1,7 +1,7 @@
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Tooltip from '@material-ui/core/Tooltip';
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ImpreciseSwingSlider from 'src/ImpreciseSwingElicitation/ImpreciseSwingSlider/ImpreciseSwingSlider';
 import ICriterion from 'src/Interface/ICriterion';
@@ -13,9 +13,8 @@ export default function CriterionOverview({
 }: {
   criterion: ICriterion;
 }) {
-  const {pvfs, showPercentages, elicitationMethod} = useContext(
-    ElicitationContext
-  );
+  const {pvfs, showPercentages, elicitationMethod} =
+    useContext(ElicitationContext);
   const unitType = criterion.dataSources[0].unitOfMeasurement.type;
   const usePercentage = showPercentages && canBePercentage(unitType);
 

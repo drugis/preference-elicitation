@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { IHelpInfo } from 'help-popup';
 import ICriterion from 'src/Interface/ICriterion';
 import IExactSwingRatio from 'src/Interface/IExactSwingRatio';
@@ -9,7 +8,7 @@ import { TElicitationMethod } from 'src/Types/TElicitationMethod';
 export default function PreferenceElicitation({ criteria, elicitationMethod, manualHost, manualLexicon, manualPath, previousCallback, pvfs, showPercentages, stepSizesByCriterion, cancelCallback, saveCallback, template }: {
     criteria: ICriterion[];
     elicitationMethod: TElicitationMethod;
-    manualHost: string;
+    manualHost?: string;
     manualLexicon: Record<string, IHelpInfo>;
     manualPath: string;
     previousCallback?: () => void;

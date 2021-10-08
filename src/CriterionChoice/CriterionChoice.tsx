@@ -1,7 +1,7 @@
 import {FormControlLabel} from '@material-ui/core';
 import Radio from '@material-ui/core/Radio';
 import Tooltip from '@material-ui/core/Tooltip';
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ICriterion from 'src/Interface/ICriterion';
 import {canBePercentage} from 'src/Util/util';

@@ -1,5 +1,4 @@
 import {TableCell, TableRow} from '@material-ui/core';
-import React from 'react';
 import ICriterion from 'src/Interface/ICriterion';
 import ThresholdElicitationStep2ValueInput from './ThresholdElicitationStep2ValueInput/ThresholdElicitationStep2ValueInput';
 
