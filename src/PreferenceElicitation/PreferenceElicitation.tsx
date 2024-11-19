@@ -12,6 +12,8 @@ import ThresholdElicitation from 'src/ThresholdElicitation/ThresholdElicitation'
 import {ThresholdElicitationContextProviderComponent} from 'src/ThresholdElicitation/ThresholdElicitationContext';
 import {TElicitationMethod} from 'src/Types/TElicitationMethod';
 import {ElicitationContextProviderComponent} from '../ElicitationContext/ElicitationContext';
+import {ChoiceBasedMatchingContextProviderComponent} from '../ChoiceBasedMatchingElicitation/ChoiceBasedMatchingContext';
+import ChoiceBasedMatchingElicitation from '../ChoiceBasedMatchingElicitation/ChoiceBasedMatchingElicitation';
 
 export default function PreferenceElicitation({
   criteria,
@@ -22,9 +24,11 @@ export default function PreferenceElicitation({
   previousCallback,
   pvfs,
   showPercentages,
+  showCbmPieChart,
   stepSizesByCriterion,
   cancelCallback,
   saveCallback,
+  setErrorMessage,
   template
 }: {
   criteria: ICriterion[];
@@ -35,12 +39,14 @@ export default function PreferenceElicitation({
   previousCallback?: () => void;
   pvfs: Record<string, TPvf>;
   showPercentages: boolean;
+  showCbmPieChart: boolean;
   stepSizesByCriterion: Record<string, number>;
   cancelCallback?: () => void;
   saveCallback: (
     preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[],
     thresholdValuesByCriterion?: Record<string, number>
   ) => Promise<any>;
+  setErrorMessage: (error: string) => void;
   template?: string;
 }): JSX.Element {
   return (
@@ -49,11 +55,13 @@ export default function PreferenceElicitation({
       criteria={criteria}
       elicitationMethod={elicitationMethod}
       showPercentages={showPercentages}
+      showCbmPieChart={showCbmPieChart}
       pvfs={pvfs}
       cancelCallback={cancelCallback}
       saveCallback={saveCallback}
       template={template}
       stepSizesByCriterion={stepSizesByCriterion}
+      setErrorMessage={setErrorMessage}
     >
       <HelpContextProviderComponent
         lexicon={manualLexicon}
@@ -72,6 +80,12 @@ function Elicitation({
   elicitationMethod: TElicitationMethod;
 }): JSX.Element {
   switch (elicitationMethod) {
+    case 'choice':
+      return (
+        <ChoiceBasedMatchingContextProviderComponent>
+          <ChoiceBasedMatchingElicitation />
+        </ChoiceBasedMatchingContextProviderComponent>
+      );
     case 'precise':
       return <PreciseSwingWeighting />;
     case 'imprecise':

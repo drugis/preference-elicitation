@@ -1,1 +1,1 @@
-export declare type TElicitationMethod = 'ranking' | 'precise' | 'matching' | 'imprecise' | 'none' | 'threshold';
+export declare type TElicitationMethod = 'choice' | 'ranking' | 'precise' | 'matching' | 'imprecise' | 'none' | 'threshold';

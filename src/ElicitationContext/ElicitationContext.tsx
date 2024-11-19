@@ -1,17 +1,20 @@
 import _ from 'lodash';
-import {createContext, useState} from 'react';
+import { createContext, useCallback, useState } from 'react';
+import ICriterionInfo from 'src/ChoiceBasedMatchingElicitation/ChoiceBasedMatchingQuestionAndAnswer/ChoiceBasedMatchingQuestion/ICriterionInfo ';
 import IRanking from 'src/Interface/IRanking';
 import IRankingAnswer from 'src/Interface/IRankingAnswer';
-import {TPvf} from 'src/Interface/TPvf';
-import {addRanking} from 'src/RankingUtil/RankingUtil';
+import { TPvf } from 'src/Interface/TPvf';
+import { addRanking } from 'src/RankingUtil/RankingUtil';
 import {
   buildInitialImprecisePreferences,
   buildInitialPrecisePreferences
 } from 'src/SwingUtil/SwingUtil';
+import { canBePercentage, getUnitLabel } from 'src/Util/util';
 import ICriterion from '../Interface/ICriterion';
 import IExactSwingRatio from '../Interface/IExactSwingRatio';
 import IRatioBoundConstraint from '../Interface/IRatioBoundConstraint';
-import {TElicitationMethod} from '../Types/TElicitationMethod';
+import IUpperRatioConstraint from '../Interface/IUpperRatioConstraint';
+import { TElicitationMethod } from '../Types/TElicitationMethod';
 import IElicitationContext from './IElicitationContext';
 
 export const ElicitationContext = createContext<IElicitationContext>(
@@ -22,26 +25,34 @@ export function ElicitationContextProviderComponent({
   elicitationMethod,
   criteria,
   showPercentages,
+  showCbmPieChart,
   previousCallback,
   pvfs,
   cancelCallback,
   saveCallback,
   template,
   stepSizesByCriterion,
+  setErrorMessage,
   children
 }: {
   elicitationMethod: TElicitationMethod;
   criteria: ICriterion[];
   showPercentages: boolean;
+  showCbmPieChart: boolean;
   previousCallback?: () => void;
   pvfs: Record<string, TPvf>;
   cancelCallback?: () => void;
   saveCallback: (
-    preferences: IExactSwingRatio[] | IRatioBoundConstraint[] | IRanking[],
+    preferences:
+      | IExactSwingRatio[]
+      | IRatioBoundConstraint[]
+      | IRanking[]
+      | IUpperRatioConstraint[],
     thresholdValuesByCriterion?: Record<string, number>
   ) => Promise<any>;
   template?: string;
   stepSizesByCriterion: Record<string, number>;
+  setErrorMessage: (error: string) => void;
   children: any;
 }): JSX.Element {
   const [currentStep, setCurrentStep] = useState(1);
@@ -98,6 +109,24 @@ export function ElicitationContextProviderComponent({
     return _.find(criteria, ['id', id]);
   }
 
+  const getCriterionInfo = useCallback(
+    (criterionId: string): ICriterionInfo => {
+      const criterion: ICriterion = _.find(criteria, ['id', criterionId]);
+      const unit = criterion.dataSources[0].unitOfMeasurement;
+      const usePercentage = criterion
+        ? showPercentages && canBePercentage(unit.type)
+        : false;
+      return {
+        title: criterion ? criterion.title : '',
+        description:
+          criterion && criterion.description ? criterion.description : '',
+        usePercentage: usePercentage,
+        unitOfMeasurement: getUnitLabel(unit, showPercentages)
+      };
+    },
+    [criteria, showPercentages]
+  );
+
   return (
     <ElicitationContext.Provider
       value={{
@@ -107,6 +136,7 @@ export function ElicitationContextProviderComponent({
         preferences,
         elicitationMethod,
         showPercentages,
+        showCbmPieChart,
         pvfs,
         criteria,
         rankings,
@@ -122,7 +152,9 @@ export function ElicitationContextProviderComponent({
         setPreferences,
         cancelCallback,
         saveCallback,
-        setRanking
+        setRanking,
+        getCriterionInfo,
+        setErrorMessage
       }}
     >
       {children}

@@ -20,8 +20,7 @@ export function ThresholdElicitationContextProviderComponent({
 }: {
   children: any;
 }) {
-  const {criteria, pvfs, getCriterion, stepSizesByCriterion} =
-    useContext(ElicitationContext);
+  const {criteria, pvfs, stepSizesByCriterion} = useContext(ElicitationContext);
 
   const [direction, setDirection] = useState<TThresholdChangeDirection>();
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(false);

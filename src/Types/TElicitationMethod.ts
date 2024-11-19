@@ -1,4 +1,5 @@
 export type TElicitationMethod =
+  | 'choice'
   | 'ranking'
   | 'precise'
   | 'matching'
