@@ -1,6 +1,6 @@
 import Axios, {AxiosError, AxiosResponse} from 'axios';
 import _ from 'lodash';
-import React, {createContext, useContext, useEffect, useState} from 'react';
+import {createContext, useContext, useEffect, useState} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import IChoiceBasedMatchingState from 'src/Interface/IChoiceBasedMatchingState';
 import {
