@@ -14,7 +14,15 @@ export default function ChoiceBasedMatchingElicitation() {
   const {currentStep} = useContext(ElicitationContext);
 
   return (
-    <Grid container item spacing={4} sm={12} md={6} component={Paper}>
+    <Grid
+      container
+      justify="center"
+      item
+      spacing={4}
+      sm={12}
+      md={6}
+      component={Paper}
+    >
       <Grid item xs={12}>
         <Typography id="choice-based-matching-title-header" variant="h4">
           <InlineHelp helpId="choice-based-matching">
