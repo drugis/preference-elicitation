@@ -1,6 +1,4 @@
-import {Box} from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import {Box, Grid, Paper} from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import {InlineHelp} from 'help-popup';
 import _ from 'lodash';

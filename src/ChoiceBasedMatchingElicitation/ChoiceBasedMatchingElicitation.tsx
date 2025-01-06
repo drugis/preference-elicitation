@@ -1,8 +1,6 @@
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
+import {Box, Grid, Typography} from '@material-ui/core';
 import {InlineHelp} from 'help-popup';
-import React, {useContext} from 'react';
+import {useContext} from 'react';
 import {ElicitationContext} from 'src/ElicitationContext/ElicitationContext';
 import ChoiceBasedMatchingButtons from './ChoiceBasedMatchingButtons/ChoiceBasedMatchingButtons';
 import {ChoiceBasedMatchingContext} from './ChoiceBasedMatchingContext';
@@ -21,7 +19,7 @@ export default function ChoiceBasedMatchingElicitation() {
       spacing={4}
       sm={12}
       md={6}
-      component={Paper}
+      component={Box}
     >
       <Grid item xs={12}>
         <Typography id="choice-based-matching-title-header" variant="h4">
